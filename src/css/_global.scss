@@ -1,0 +1,93 @@
+@import "colors";
+@import "text";
+@import "bottom-nav";
+@import "utils";
+/* fontes */
+* {
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+}
+@font-face {
+    font-family: 'college';
+    src: url('../fontes/college.ttf')format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Starjedi';
+    src: url('../fontes/starjedi/Starjhol.ttf')format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'appleberry';
+    src: url('../fontes/appleberry.ttf')format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+.borda{
+    border-style: groove;
+    border-width: 8px;
+    border-color: darkgreen;    
+    position: relative;
+    background: url('../imgs/fundoColorTransp.png') center center no-repeat;
+    max-width: 80vw;
+    height: auto;
+    padding: 1vh;
+    margin: 0 auto;
+}
+
+.button{
+    background: linear-gradient(#0BD0FF, #089DDA);
+    border-radius: 10px;
+    border-width:  1px;
+    padding: 10px 35px;
+    color: black;
+    text-align: center;    
+    font-family: sans-serif;
+    font-weight: bolder;
+    font-size: $normal;
+    color:  black;
+    cursor: pointer;
+    text-transform: uppercase;
+    &:hover, &:focus, &:active {
+        background: -webkit-linear-gradient(#FEFEFE, #009846);
+        background: -o-linear-gradient(#FEFEFE, #009846);
+        background: linear-gradient(#FEFEFE, #009846);
+    }
+}
+button {
+    &.clean {
+        background: transparent;
+        border: none;
+        outline: none;
+        cursor: pointer;
+    }
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+}
+header {
+    h1 {
+        color: $primary;
+        text-align: center;
+        padding: 0;
+        margin: 15px 0 0 0;
+    }    
+}
+section {
+    h2 {
+        padding: 0;
+        margin: 10px 0;
+    }
+    img {
+        max-width: 300px;
+        margin: 0 auto;
+    }
+}
+.textoQuadro {
+    color: white;
+    margin: 10px 0;
+}

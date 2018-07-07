@@ -1,0 +1,46 @@
+.hidden {
+	display: none;
+}
+.block {
+	display: block;
+}
+.inline {
+	display: inline;
+}
+.pull-left {
+	float:left;
+}
+.pull-right {
+	float: right;
+}
+.clearfix {
+	clear: both;
+}
+.full {
+	width: 100%;
+}
+.absolute {
+	position: absolute;
+}
+.top{
+	top: 0;
+}
+.right {
+	right: 0;
+}
+.bottom {
+	bottom: 0;
+}
+.left {
+	left: 0;
+}
+img {
+	display: block;
+	&.imgSmall {
+		max-width: 250px;
+	}
+}
+.img-responsive {
+	max-width: 100%;
+	height: auto;
+}

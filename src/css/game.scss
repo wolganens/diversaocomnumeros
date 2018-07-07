@@ -1,0 +1,53 @@
+@import "global";
+@import url(http://fonts.googleapis.com/css?family=Gloria+Hallelujah);
+
+$image: 'http://pancaketheorem.com/stuff/demos/borderimage/wood.png';
+$bgImage:'http://tumodaurbana.com/wp-content/uploads/2013/05/tumodaurbana-expo-dali.jpg';
+
+section {    
+    border-width:15px;
+    -webkit-border-image: url($image) 200 stretch;
+    -moz-border-image: url($image) 200 stretch;
+    border-image: url($image) 200 stretch;
+    -webkit-box-shadow: inset 0px 0px 1vw rgba(0,0,0,1);
+    border-style:solid;    
+    background-image: url('../imgs/green-noise.png');
+    position: relative;
+    margin: 0 auto;
+    padding: 1%;
+    #top-info {            
+        color: $info;
+        padding: 7px 20px 0 20px;
+    }
+    #conta {
+        color: white;
+        max-width: 80%;
+        margin: 0 auto;
+        position: relative;
+        #conta-valores {
+            transform: rotate(-.7deg) rotateY(0deg);
+            -webkit-transform: rotate(-.7deg) rotateY(0deg);
+            margin-top: 10px;
+            border-width: 0 0 2px 0;
+            border-style: solid;
+            border-color:rgba(255,255,255,0.4);            
+            text-shadow:0 0 4px rgba(255,255,255,0.4);
+            color:rgba(255,255,255,0.7);            
+            /* font-family: 'Gloria Hallelujah'; */
+        }
+        span {
+            display: block;
+        }
+        input {
+            padding: 5px;            
+            max-width: 80%;
+            text-align: center;
+            color:rgba(255,255,255,0.7);
+            font-weight: bolder;
+            border-width: 1px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 8px;
+            outline: none;            
+        }
+    }
+}
