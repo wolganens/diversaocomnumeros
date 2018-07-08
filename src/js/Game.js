@@ -23,6 +23,10 @@ class GameInfo extends React.Component {
     this.setState(prevState => ({
       time: prevState.time - 1
     }));
+    if (this.state.time <= 0) {
+      this.props.onGameOver();
+      clearInterval(this.interval);
+    }
   }
   componentDidMount() {
     /*
@@ -113,6 +117,7 @@ class GameQuestion extends React.Component {
             type="number"
             value={this.state.answer && parseInt(this.state.answer, 10)}
             onChange={this.onInputChange}
+            disabled={this.props.gameOver}
           />
         </form>
       </div>
@@ -182,10 +187,12 @@ export default class GameBoard extends React.Component {
     super(props)
     this.state = {
       level: 4,
-      points: 0
+      points: 0,
+      gameOver: false
     }
     this.onCorrentAnswer = this.onCorrentAnswer.bind(this);
     this.onIncorrectAnswer = this.onIncorrectAnswer.bind(this);
+    this.onGameOver = this.onGameOver.bind(this);
   }
   onCorrentAnswer() {
     /*
@@ -200,15 +207,26 @@ export default class GameBoard extends React.Component {
   onIncorrectAnswer() {
     this.error.audioEl.play()
   }
+  onGameOver() {
+    alert("Acabou =/");
+    this.setState({
+      gameOver: true
+    })
+  }
   render() {
     return (
       <main className="borda">
         <section className="quadroJogo">
-          <GameInfo points={this.state.points}/>
+          <GameInfo
+            onGameOver={this.onGameOver}
+            points={this.state.points}
+          />
           <GameQuestion
             onCorrentAnswer={this.onCorrentAnswer}
             onIncorrectAnswer={this.onIncorrectAnswer}
-            question={gerarNovaConta(this.state.points, this.state.level)}/>
+            question={gerarNovaConta(this.state.points, this.state.level)}
+            gameOver={this.state.gameOver}
+          />
           <GameActions/>
           <GameNav/>
           <ReactAudioPlayer
