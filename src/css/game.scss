@@ -24,6 +24,7 @@ section {
         max-width: 80%;
         margin: 0 auto;
         position: relative;
+        z-index: 2;
         #conta-valores {
             transform: rotate(-.7deg) rotateY(0deg);
             -webkit-transform: rotate(-.7deg) rotateY(0deg);
@@ -47,12 +48,19 @@ section {
             border-width: 1px;
             background-color: rgba(255,255,255,0.1);
             border-radius: 8px;
-            outline: none;            
+            outline: none;
+            z-index: 2;
+            position: relative;
         }
     }
     #game-actions {
         button {
             width: 95px;
         }
+    }
+    #clock-img {
+        max-width: 120px;
+        height: auto;
+        z-index: 1;
     }
 }

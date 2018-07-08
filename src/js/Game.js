@@ -2,6 +2,8 @@ import React from 'react';
 import ReactAudioPlayer from 'react-audio-player';
 import disabledMusic from '../imgs/somDesativadoAzul.png';
 import enabledMusic from '../imgs/somAtivadoAzul.png';
+import clockImage from '../imgs/relogio.png';
+import hurryClockImage from '../imgs/relogiotempo.png';
 import '../css/game.css'
 
 class GameInfo extends React.Component {
@@ -23,6 +25,17 @@ class GameInfo extends React.Component {
     this.setState(prevState => ({
       time: prevState.time - 1
     }));
+    /*
+      A partir dos 10 segundos restantes, liga o estado de "apuro",
+      fazendo mudar a imagem do relógio
+    */
+    if (this.state.time <= 10) {
+      this.props.onHurryUp();
+    }
+    /*
+      Detecta se o jogo acabou por falta de tempo, se sim, limpa 
+      o contador
+    */
     if (this.state.time <= 0) {
       this.props.onGameOver();
       clearInterval(this.interval);
@@ -151,18 +164,18 @@ class GameActions extends React.Component {
         {this.state.enabledMusic ? (
           <button
             id="enabled-sound"
-            className="clean"
+            className="clean pull-left"
             onClick={this.disableMusic}>
               <img className="img-responsive" src={enabledMusic} alt="Pausar música de fundo"/>
           </button>
         ) : (
           <button
             id="disabled-sound"
-            className="clean"
+            className="clean pull-left"
             onClick={this.enableMusic}>
               <img className="img-responsive" src={disabledMusic} alt="Pausar música de fundo"/>
           </button>
-        )}
+        )}        
         <ReactAudioPlayer
             src="/sons/Bubble_Bath.mp3"
             ref={(element) => { this.music = element; }}
@@ -171,6 +184,7 @@ class GameActions extends React.Component {
             controls
             loop={true}
           />
+        <div className="clearfix"></div>
       </div>
     )
   }
@@ -188,11 +202,13 @@ export default class GameBoard extends React.Component {
     this.state = {
       level: 4,
       points: 0,
-      gameOver: false
+      gameOver: false,
+      hurryUp: false
     }
     this.onCorrentAnswer = this.onCorrentAnswer.bind(this);
     this.onIncorrectAnswer = this.onIncorrectAnswer.bind(this);
     this.onGameOver = this.onGameOver.bind(this);
+    this.onHurryUp = this.onHurryUp.bind(this);
   }
   onCorrentAnswer() {
     /*
@@ -213,12 +229,20 @@ export default class GameBoard extends React.Component {
       gameOver: true
     })
   }
+  onHurryUp() {
+    if (!this.state.hurryUp) {
+      this.setState({
+        hurryUp: true
+      });
+    }
+  }
   render() {
     return (
       <main className="borda">
         <section className="quadroJogo">
           <GameInfo
             onGameOver={this.onGameOver}
+            onHurryUp={this.onHurryUp}
             points={this.state.points}
           />
           <GameQuestion
@@ -227,6 +251,12 @@ export default class GameBoard extends React.Component {
             question={gerarNovaConta(this.state.points, this.state.level)}
             gameOver={this.state.gameOver}
           />
+          {this.state.hurryUp ? (
+            <img id="clock-img" class="absolute right bottom" src={hurryClockImage} alt="relogio do tempo"/>
+          ) : (
+            <img id="clock-img" class="absolute right bottom" src={clockImage} alt="relogio do tempo"/>
+          )}
+          
           <GameActions/>
           <GameNav/>
           <ReactAudioPlayer
