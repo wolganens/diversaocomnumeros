@@ -14,7 +14,8 @@ class GameInfo extends React.Component {
   constructor(props) {
     super(props)
     this.state = {      
-      time: 60
+      time: 60,
+      hurryUp: false
     }
   }
   tick() {
@@ -30,7 +31,11 @@ class GameInfo extends React.Component {
       fazendo mudar a imagem do relógio
     */
     if (this.state.time <= 10) {
-      this.props.onHurryUp();
+      if (!this.state.hurryUp) {
+        this.setState({
+          hurryUp: true
+        });
+      }
     }
     /*
       Detecta se o jogo acabou por falta de tempo, se sim, limpa 
@@ -61,6 +66,11 @@ class GameInfo extends React.Component {
         <div className="pull-left">Pontos: {this.props.points}</div>
         <div className="pull-right">Tempo: {this.state.time}</div>
         <div className="clearfix"></div>
+        {this.state.hurryUp ? (
+          <img id="clock-img" class="absolute right bottom" src={hurryClockImage} alt="relogio do tempo"/>
+        ) : (
+          <img id="clock-img" class="absolute right bottom" src={clockImage} alt="relogio do tempo"/>
+        )}
       </div>
     )
   }
@@ -202,13 +212,11 @@ export default class GameBoard extends React.Component {
     this.state = {
       level: 4,
       points: 0,
-      gameOver: false,
-      hurryUp: false
+      gameOver: false,      
     }
     this.onCorrentAnswer = this.onCorrentAnswer.bind(this);
     this.onIncorrectAnswer = this.onIncorrectAnswer.bind(this);
-    this.onGameOver = this.onGameOver.bind(this);
-    this.onHurryUp = this.onHurryUp.bind(this);
+    this.onGameOver = this.onGameOver.bind(this);    
   }
   onCorrentAnswer() {
     /*
@@ -228,21 +236,13 @@ export default class GameBoard extends React.Component {
     this.setState({
       gameOver: true
     })
-  }
-  onHurryUp() {
-    if (!this.state.hurryUp) {
-      this.setState({
-        hurryUp: true
-      });
-    }
-  }
+  }  
   render() {
     return (
       <main className="borda">
         <section className="quadroJogo">
           <GameInfo
-            onGameOver={this.onGameOver}
-            onHurryUp={this.onHurryUp}
+            onGameOver={this.onGameOver}            
             points={this.state.points}
           />
           <GameQuestion
@@ -250,12 +250,7 @@ export default class GameBoard extends React.Component {
             onIncorrectAnswer={this.onIncorrectAnswer}
             question={gerarNovaConta(this.state.points, this.state.level)}
             gameOver={this.state.gameOver}
-          />
-          {this.state.hurryUp ? (
-            <img id="clock-img" class="absolute right bottom" src={hurryClockImage} alt="relogio do tempo"/>
-          ) : (
-            <img id="clock-img" class="absolute right bottom" src={clockImage} alt="relogio do tempo"/>
-          )}
+          />          
           
           <GameActions/>
           <GameNav/>
@@ -339,7 +334,7 @@ function gerarNovaConta (pontos, dificuldade) {
   }else if(probabilidade < (probabilidadeSoma + probabilidadeSubtracao)){
       op = "-";
   }else if(probabilidade < (probabilidadeSoma + probabilidadeSubtracao + probabilidadeMultiplicacao)){
-      op = "*";
+      op = "x";
   }else{
       /* jamais deveria chegar nesse ponto, mas tenho que usar essa 
        * verificação por segurança e lançar a exceção adequada */
@@ -357,7 +352,7 @@ function gerarNovaConta (pontos, dificuldade) {
               n2 = Math.round(Math.random() * n2Maximo);
           /* impede resultados negativos */
           }while(n1 < n2);
-      }else if(op === "*"){
+      }else if(op === "x"){
           /* usa grandezas reduzidas (7% do valor) no caso de multiplicações */                
           n1 = Math.round(Math.random() * n1Maximo * 0.08);
           n2 = Math.round(Math.random() * n2Maximo * 0.04);
