@@ -3,8 +3,7 @@
 
 $image: 'http://pancaketheorem.com/stuff/demos/borderimage/wood.png';
 $bgImage:'http://tumodaurbana.com/wp-content/uploads/2013/05/tumodaurbana-expo-dali.jpg';
-
-section {    
+section.quadroJogo {    
     border-width:15px;
     -webkit-border-image: url($image) 200 stretch;
     -moz-border-image: url($image) 200 stretch;

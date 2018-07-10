@@ -93,7 +93,9 @@ export default class GameBoard extends React.Component {
         );
       case this.gameStates.TUTORIAL:
         return (
-          <Tutorial/>
+          <Tutorial
+            onStartGame={this.onStartGame}
+          />
         )
       default:
         return (<div></div>);

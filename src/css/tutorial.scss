@@ -18,6 +18,10 @@ body {
         font-size: $medium;
     }    
 }
+section img {
+    max-width: 300px;
+    margin: 0 auto;
+}
 .somIcone {
     background: transparent;
     border: none;

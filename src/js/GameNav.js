@@ -3,7 +3,9 @@ import React from 'react';
 export default class GameNav extends React.Component {
   render() {
     return (
-      <div></div>
+      <nav className="text-center">
+        {this.props.children}
+      </nav>
     )
   }
 }
