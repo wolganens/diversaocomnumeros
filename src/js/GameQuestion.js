@@ -64,7 +64,7 @@ export default class GameQuestion extends React.Component {
             type="number"
             value={this.state.answer && parseInt(this.state.answer, 10)}
             onChange={this.onInputChange}
-            disabled={this.props.gameOver}
+            disabled={this.props.gameOver || this.props.isPaused}
           />
         </form>
       </div>

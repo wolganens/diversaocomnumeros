@@ -5,6 +5,7 @@ import StartScreen from './StartScreen';
 import GamePlay from './GamePlay';
 import GameNav from './GameNav';
 import Tutorial from './Tutorial';
+import Menu from './Menu';
 
 export default class GameBoard extends React.Component {
   constructor(props) {
@@ -18,7 +19,9 @@ export default class GameBoard extends React.Component {
       /*Fim do jogo*/
       GAMEOVER: 2,
       /*Tela de tutorial*/
-      TUTORIAL: 3
+      TUTORIAL: 3,
+      /*Tela de Jogo pausado*/
+      PAUSED: 4.      
     };
     this.state = {
       level: 4,
@@ -33,6 +36,9 @@ export default class GameBoard extends React.Component {
     this.onStartGame = this.onStartGame.bind(this);
     this.onExitGame = this.onExitGame.bind(this);
     this.onDisplayTutorial = this.onDisplayTutorial.bind(this);
+    this.onPauseGame = this.onPauseGame.bind(this);
+    this.onResumeGame = this.onResumeGame.bind(this);
+    this.saveOldTime = this.saveOldTime.bind(this);
   }
   onCorrentAnswer() {
     /*
@@ -65,6 +71,23 @@ export default class GameBoard extends React.Component {
       gameState: this.gameStates.TUTORIAL
     });
   }
+  onPauseGame() {
+    this.setState(prevState => ({
+      score: prevState.score,
+      gameState: this.gameStates.PAUSED
+    }));
+  }
+  onResumeGame() {
+    this.setState(prevState => {      
+      return ({
+        score: prevState.score,
+        gameState: this.gameStates.PLAYING
+      })
+    });
+  }
+  saveOldTime(time) {
+    this.oldTime = time
+  }
   renderMainSection() {
     /*Renderiza a janela principal do jogo de acordo com o estado atual*/
     switch (this.state.gameState) {
@@ -83,9 +106,17 @@ export default class GameBoard extends React.Component {
               score={this.state.score}
               onCorrentAnswer={this.onCorrentAnswer}
               onIncorrectAnswer={this.onIncorrectAnswer}
+              isPaused={this.state.gameState === this.gameStates.PAUSED}
+              saveOldTime={this.saveOldTime}
+              oldTime={this.oldTime}
             />
             <GameNav>
-              <button className="button">Pausar</button>
+              <button 
+                className="button"
+                onClick={this.onPauseGame}
+              >
+                Pausar
+              </button>
             </GameNav>
           </div>
         );
@@ -101,6 +132,13 @@ export default class GameBoard extends React.Component {
         return (
           <Tutorial
             onStartGame={this.onStartGame}
+          />
+        )
+      case this.gameStates.PAUSED:
+        return (
+          <Menu
+            onDisplayTutorial={this.onDisplayTutorial}
+            onResumeGame={this.onResumeGame}
           />
         )
       default:

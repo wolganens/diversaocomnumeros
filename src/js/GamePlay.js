@@ -24,11 +24,15 @@ export default class GamePlay extends React.Component {
         <GameInfo
           onGameOver={this.props.onGameOver} 
           score={this.props.score}
+          isPaused={this.props.isPaused}
+          saveOldTime={this.props.saveOldTime}
+          time={this.props.oldTime}
         />
         <GameQuestion
           onCorrentAnswer={this.correctHandler}
           onIncorrectAnswer={this.incorrectHandler}
           question={gerarNovaConta(this.props.score, this.props.level)}
+          isPaused={this.props.isPaused}
         />
         <GameActions/>
         <GameNav/>

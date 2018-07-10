@@ -10,7 +10,7 @@ export default class GameInfo extends React.Component {
   constructor(props) {
     super(props)
     this.state = {      
-      time: 60,
+      time: props.time || 60,
       hurryUp: false
     }
   }
@@ -22,6 +22,7 @@ export default class GameInfo extends React.Component {
     this.setState(prevState => ({
       time: prevState.time - 1
     }));
+    this.props.saveOldTime(this.state.time)
     /*
       A partir dos 10 segundos restantes, liga o estado de "apuro",
       fazendo mudar a imagem do relógio
@@ -48,6 +49,11 @@ export default class GameInfo extends React.Component {
       Nesse intervalo, dizemos que o método tick() do componente, será executado
       a cada 1 segundo (1000ms)
     */
+    console.log(this.props)
+    this.setState(prevState => {
+      console.log(prevState)
+      return null;
+    })
     this.interval = setInterval(() => this.tick(), 1000);
   }
   componentWillUnmount() {
