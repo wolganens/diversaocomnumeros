@@ -5,6 +5,8 @@ import enabledMusic from '../imgs/somAtivadoAzul.png';
 import clockImage from '../imgs/relogio.png';
 import hurryClockImage from '../imgs/relogiotempo.png';
 import '../css/game.css'
+import GameOver from './GameOver';
+import StartScreen from './StartScreen';
 
 class GameInfo extends React.Component {
   /*
@@ -14,7 +16,7 @@ class GameInfo extends React.Component {
   constructor(props) {
     super(props)
     this.state = {      
-      time: 60,
+      time: 5,
       hurryUp: false
     }
   }
@@ -63,13 +65,13 @@ class GameInfo extends React.Component {
   render() {
     return (
       <div id="top-info">
-        <div className="pull-left">Pontos: {this.props.points}</div>
+        <div className="pull-left">Pontos: {this.props.score}</div>
         <div className="pull-right">Tempo: {this.state.time}</div>
         <div className="clearfix"></div>
         {this.state.hurryUp ? (
-          <img id="clock-img" class="absolute right bottom" src={hurryClockImage} alt="relogio do tempo"/>
+          <img id="clock-img" className="absolute right bottom" src={hurryClockImage} alt="relogio do tempo"/>
         ) : (
-          <img id="clock-img" class="absolute right bottom" src={clockImage} alt="relogio do tempo"/>
+          <img id="clock-img" className="absolute right bottom" src={clockImage} alt="relogio do tempo"/>
         )}
       </div>
     )
@@ -96,7 +98,7 @@ class GameQuestion extends React.Component {
       case '-':
         result = n1 - n2;
         break;
-      case '*':
+      case 'x':
         result = n1 * n2;
         break;
       default:
@@ -209,14 +211,29 @@ class GameNav extends React.Component {
 export default class GameBoard extends React.Component {
   constructor(props) {
     super(props)
+    
+    this.gameStates = {
+      /*Tela inicial do jogo*/
+      START_SCREEN: 0,
+      /*Jogo em andamento*/
+      PLAYING: 1,
+      /*Fim do jogo*/
+      GAMEOVER: 2,
+      /*Tela de tutorial*/
+      TUTORIAL: 3
+    };
     this.state = {
       level: 4,
-      points: 0,
-      gameOver: false,      
+      score: 0,
+      gameState: this.gameStates.START_SCREEN,
+      tutorial: false,
+      start: false
     }
     this.onCorrentAnswer = this.onCorrentAnswer.bind(this);
     this.onIncorrectAnswer = this.onIncorrectAnswer.bind(this);
-    this.onGameOver = this.onGameOver.bind(this);    
+    this.onGameOver = this.onGameOver.bind(this);
+    this.renderMainSection = this.renderMainSection.bind(this);
+    this.onPlayAgain = this.onPlayAgain.bind(this);
   }
   onCorrentAnswer() {
     /*
@@ -224,7 +241,7 @@ export default class GameBoard extends React.Component {
       e toca o som de resposta correta
     */
     this.setState(prevState => ({
-      points: prevState.points + 10
+      score: prevState.score + 10
     }));
     this.correct.audioEl.play()
   }
@@ -232,43 +249,67 @@ export default class GameBoard extends React.Component {
     this.error.audioEl.play()
   }
   onGameOver() {
-    alert("Acabou =/");
     this.setState({
-      gameOver: true
-    })
-  }  
+      gameState: this.gameStates.GAMEOVER
+    });
+  }
+  onPlayAgain() {
+    this.setState({
+      score: 0,
+      gameState: this.gameStates.PLAYING
+    });
+  }
+  renderMainSection() {
+    /*Renderiza a janela principal do jogo de acordo com o estado atual*/
+    switch (this.state.gameState) {
+      case this.gameStates.START_SCREEN:
+        return <StartScreen/>;
+      case this.gameStates.PLAYING:
+        return (
+          <section className="quadroJogo">
+            <GameInfo
+              onGameOver={this.onGameOver}            
+              score={this.state.score}
+            />
+            <GameQuestion
+              onCorrentAnswer={this.onCorrentAnswer}
+              onIncorrectAnswer={this.onIncorrectAnswer}
+              question={gerarNovaConta(this.state.score, this.state.level)}
+              gameOver={this.state.gameOver}
+            />
+            <GameActions/>
+            <GameNav/>
+            <ReactAudioPlayer
+              src="/sons/acerto.mp3"
+              ref={(element) => { this.correct = element; }}
+              autoPlay={false}
+              className="hidden"
+              controls
+            />
+            <ReactAudioPlayer
+              src="/sons/erro.mp3"
+              ref={(element) => { this.error = element; }}
+              autoPlay={false}
+              className="hidden"
+              controls
+            />
+          </section>
+        );
+      case this.gameStates.GAMEOVER:
+        return (
+          <GameOver
+            score={this.state.score}
+            onPlayAgain={this.onPlayAgain}
+          />
+        );
+      default:
+        return (<div></div>);
+    }
+  }
   render() {
     return (
-      <main className="borda">
-        <section className="quadroJogo">
-          <GameInfo
-            onGameOver={this.onGameOver}            
-            points={this.state.points}
-          />
-          <GameQuestion
-            onCorrentAnswer={this.onCorrentAnswer}
-            onIncorrectAnswer={this.onIncorrectAnswer}
-            question={gerarNovaConta(this.state.points, this.state.level)}
-            gameOver={this.state.gameOver}
-          />          
-          
-          <GameActions/>
-          <GameNav/>
-          <ReactAudioPlayer
-            src="/sons/acerto.mp3"
-            ref={(element) => { this.correct = element; }}
-            autoPlay={false}
-            className="hidden"
-            controls
-          />
-          <ReactAudioPlayer
-            src="/sons/erro.mp3"
-            ref={(element) => { this.error = element; }}
-            autoPlay={false}
-            className="hidden"
-            controls
-          />
-        </section>
+      <main className="borda">        
+        {this.renderMainSection()}
       </main>
     );
   }
