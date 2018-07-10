@@ -6,6 +6,7 @@ import GamePlay from './GamePlay';
 import GameNav from './GameNav';
 import Tutorial from './Tutorial';
 import Menu from './Menu';
+import Level from './Level'
 
 export default class GameBoard extends React.Component {
   constructor(props) {
@@ -21,7 +22,9 @@ export default class GameBoard extends React.Component {
       /*Tela de tutorial*/
       TUTORIAL: 3,
       /*Tela de Jogo pausado*/
-      PAUSED: 4.      
+      PAUSED: 4,
+      /*Seleção de Dificuldade*/
+      LEVEL: 5
     };
     this.state = {
       level: 4,
@@ -39,6 +42,9 @@ export default class GameBoard extends React.Component {
     this.onPauseGame = this.onPauseGame.bind(this);
     this.onResumeGame = this.onResumeGame.bind(this);
     this.saveOldTime = this.saveOldTime.bind(this);
+    this.onChangeLevel = this.onChangeLevel.bind(this);
+    this.onDisplayLevel = this.onDisplayLevel.bind(this);
+    this.onExitLevel = this.onExitLevel.bind(this);
   }
   onCorrentAnswer() {
     /*
@@ -83,6 +89,21 @@ export default class GameBoard extends React.Component {
         score: prevState.score,
         gameState: this.gameStates.PLAYING
       })
+    });
+  }
+  onChangeLevel(level) {
+    this.setState({
+      level
+    });
+  }
+  onDisplayLevel() {
+    this.setState({
+      gameState: this.gameStates.LEVEL
+    });
+  }
+  onExitLevel() {
+    this.setState({
+      gameState: this.gameStates.PAUSED
     });
   }
   saveOldTime(time) {
@@ -131,7 +152,7 @@ export default class GameBoard extends React.Component {
       case this.gameStates.TUTORIAL:
         return (
           <Tutorial
-            onStartGame={this.onStartGame}
+            onStartGame={this.onResumeGame}
           />
         )
       case this.gameStates.PAUSED:
@@ -139,6 +160,15 @@ export default class GameBoard extends React.Component {
           <Menu
             onDisplayTutorial={this.onDisplayTutorial}
             onResumeGame={this.onResumeGame}
+            onDisplayLevel={this.onDisplayLevel}
+          />
+        )
+      case this.gameStates.LEVEL:
+        return (
+          <Level 
+            onChangeLevel={this.onChangeLevel}
+            onExitLevel={this.onExitLevel}
+            level={this.state.level}
           />
         )
       default:

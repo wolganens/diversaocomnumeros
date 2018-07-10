@@ -11,7 +11,7 @@ export default class Menu extends React.Component {
           Tutorial
         </button>
         <button
-          onClick={this.props.onDisplayLevels}
+          onClick={this.props.onDisplayLevel}
           className="button">Dificuldade
         </button>
         <div className="grand">Jogo Pausado!</div>
