@@ -3,6 +3,7 @@ import '../css/game.css'
 import GameOver from './GameOver';
 import StartScreen from './StartScreen';
 import GamePlay from './GamePlay';
+import GameNav from './GameNav';
 import Tutorial from './Tutorial';
 
 export default class GameBoard extends React.Component {
@@ -76,12 +77,17 @@ export default class GameBoard extends React.Component {
         );
       case this.gameStates.PLAYING:
         return (
-          <GamePlay
-            onGameOver={this.onGameOver}
-            score={this.state.score}
-            onCorrentAnswer={this.onCorrentAnswer}
-            onIncorrectAnswer={this.onIncorrectAnswer}
-          />
+          <div>
+            <GamePlay
+              onGameOver={this.onGameOver}
+              score={this.state.score}
+              onCorrentAnswer={this.onCorrentAnswer}
+              onIncorrectAnswer={this.onIncorrectAnswer}
+            />
+            <GameNav>
+              <button className="button">Pausar</button>
+            </GameNav>
+          </div>
         );
       case this.gameStates.GAMEOVER:
         return (

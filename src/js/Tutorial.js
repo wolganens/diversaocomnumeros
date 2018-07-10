@@ -119,12 +119,14 @@ export default class Tutorial extends React.Component {
           </div>
         )}
         <GameNav>
-          <button 
-            className="button"
-            onClick={()=>{this.setState({selected: null})}}
-          >
-              Tutorial
-          </button>
+          { this.state.selected != null && 
+            <button 
+              className="button"
+              onClick={()=>{this.setState({selected: null})}}
+            >
+                Tutorial
+            </button>
+          }
           <button
             className="button"
             onClick={this.props.onStartGame}
@@ -132,20 +134,23 @@ export default class Tutorial extends React.Component {
             Jogar
           </button>
           {this.state.selected != null && (
-            <button
-              className="button"
-              onClick={this.handlePrev}            
-            >
-              Anterior
-            </button>)
+            <span>
+              <button
+                className="button"
+                onClick={this.handlePrev}            
+              >
+                Anterior
+              </button>
+              <button
+                className="button"
+                onClick={this.handleNext}
+                disabled={this.state.selected === this.tutorials.length - 1}
+              >
+                Próximo
+              </button>
+            </span>
+            )
           }
-          <button
-            className="button"
-            onClick={this.handleNext}
-            disabled={this.state.selected === this.tutorials.length - 1}
-          >
-            Próximo
-          </button>
         </GameNav>
       </div>
     );
