@@ -3,6 +3,7 @@ import '../css/game.css'
 import GameOver from './GameOver';
 import StartScreen from './StartScreen';
 import GamePlay from './GamePlay';
+import Tutorial from './Tutorial';
 
 export default class GameBoard extends React.Component {
   constructor(props) {
@@ -30,6 +31,7 @@ export default class GameBoard extends React.Component {
     this.renderMainSection = this.renderMainSection.bind(this);
     this.onStartGame = this.onStartGame.bind(this);
     this.onExitGame = this.onExitGame.bind(this);
+    this.onDisplayTutorial = this.onDisplayTutorial.bind(this);
   }
   onCorrentAnswer() {
     /*
@@ -57,13 +59,19 @@ export default class GameBoard extends React.Component {
       gameState: this.gameStates.START_SCREEN
     });
   }
+  onDisplayTutorial() {
+    this.setState({
+      gameState: this.gameStates.TUTORIAL
+    });
+  }
   renderMainSection() {
     /*Renderiza a janela principal do jogo de acordo com o estado atual*/
     switch (this.state.gameState) {
       case this.gameStates.START_SCREEN:
         return (
           <StartScreen
-            onStartGame={this.onStartGame}            
+            onStartGame={this.onStartGame}
+            onDisplayTutorial={this.onDisplayTutorial}     
           />
         );
       case this.gameStates.PLAYING:
@@ -83,6 +91,10 @@ export default class GameBoard extends React.Component {
             onExitGame={this.onExitGame}
           />
         );
+      case this.gameStates.TUTORIAL:
+        return (
+          <Tutorial/>
+        )
       default:
         return (<div></div>);
     }

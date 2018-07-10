@@ -1,0 +1,36 @@
+@import 'global';
+
+body {
+    font-family: 'appleberry';
+}
+#linksTopicos {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    li {
+        &, a{
+            display: block;            
+        }
+        a {            
+            text-decoration: none;
+        }
+        padding: 2px 0;
+        font-size: $medium;
+    }    
+}
+.somIcone {
+    background: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    img {
+        width: 45px;
+        height: 45px;
+        height: auto;
+        float: left;
+    }     
+    font-family: 'appleberry';        
+    color: black;
+    line-height: 45px;
+    margin-left: 10px;
+}

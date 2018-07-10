@@ -52,7 +52,7 @@ html {
 .small {
 	font-size: $small;
 }
-a {
+a, button.clean {
 	color: $primary;
 	&:hover,&:focus, &:active {
 		color: $secondary;
