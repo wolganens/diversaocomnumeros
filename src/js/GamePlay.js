@@ -55,6 +55,7 @@ export default class GamePlay extends React.Component {
   }
 }
 function gerarNovaConta (pontos, dificuldade) {
+  console.log(dificuldade)
   let n1;
   let op;
   let n2;

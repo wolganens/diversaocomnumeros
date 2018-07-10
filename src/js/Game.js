@@ -130,6 +130,7 @@ export default class GameBoard extends React.Component {
               isPaused={this.state.gameState === this.gameStates.PAUSED}
               saveOldTime={this.saveOldTime}
               oldTime={this.oldTime}
+              level={this.state.level}
             />
             <GameNav>
               <button 
