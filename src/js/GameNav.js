@@ -4,7 +4,9 @@ export default class GameNav extends React.Component {
   render() {
     return (
       <nav className="game-nav text-center">
-        {this.props.children}
+      	<div className="btn-group">
+        	{this.props.children}
+        </div>
       </nav>
     )
   }

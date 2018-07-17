@@ -5,20 +5,22 @@ export default class Menu extends React.Component {
     return (
       <section className="quadroJogo text-center text-board">
         <div className="grand">Menu</div>
-        <button
-          onClick={this.props.onDisplayTutorial}
-          className="button">
-          Tutorial
-        </button>
-        <button
-          onClick={this.props.onDisplayLevel}
-          className="button">Dificuldade
-        </button>
-        <div className="grand">Jogo Pausado!</div>
-        <button
-          onClick={this.props.onResumeGame}
-          className="button">Continuar Jogando
-        </button>
+        <div className="btn-group">
+          <button
+            onClick={this.props.onDisplayTutorial}
+            className="button">
+            Tutorial
+          </button>
+          <button
+            onClick={this.props.onDisplayLevel}
+            className="button">Dificuldade
+          </button>
+          <div className="grand">Jogo Pausado!</div>
+          <button
+            onClick={this.props.onResumeGame}
+            className="button">Continuar Jogando
+          </button>
+        </div>
       </section>
     );
   }

@@ -12,18 +12,20 @@ export default class StartScreen extends React.Component {
           </h1>
         </header>
         <nav className="game-nav text-center">
-          <button
-            className="button"
-            onClick={this.props.onStartGame}
-          >
-            ▶ JOGAR
-          </button>
-          <button
-            className="button"
-            onClick={this.props.onDisplayTutorial}
-          >
-            TUTORIAL
-          </button>
+          <div className="btn-group">
+            <button
+              className="button"
+              onClick={this.props.onStartGame}
+            >
+              ▶ JOGAR
+            </button>
+            <button
+              className="button"
+              onClick={this.props.onDisplayTutorial}
+            >
+              TUTORIAL
+            </button>
+          </div>
         </nav>
       </div>
     );
