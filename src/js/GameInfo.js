@@ -48,10 +48,8 @@ export default class GameInfo extends React.Component {
       Quando o componente é montado, iniciamos um contador de segundos
       Nesse intervalo, dizemos que o método tick() do componente, será executado
       a cada 1 segundo (1000ms)
-    */
-    console.log(this.props)
-    this.setState(prevState => {
-      console.log(prevState)
+    */    
+    this.setState(prevState => {      
       return null;
     })
     this.interval = setInterval(() => this.tick(), 1000);

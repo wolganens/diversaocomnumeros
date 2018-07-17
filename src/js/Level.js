@@ -5,8 +5,7 @@ export default class Level extends React.Component {
     super(props)
     this.displayLevelText = this.displayLevelText.bind(this);
   }
-  displayLevelText() {
-    console.log(this.props.level)
+  displayLevelText() {    
     switch (this.props.level) {
       case 1:
         return 'Fácil';

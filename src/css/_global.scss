@@ -32,7 +32,7 @@
     border-color: darkgreen;    
     position: relative;
     background: url('../imgs/fundoColorTransp.png') center center no-repeat;
-    max-width: 80vw;
+    max-width: 820px;
     height: auto;
     padding: 1vh;
     margin: 0 auto;
@@ -56,6 +56,10 @@
         background: -o-linear-gradient(#FEFEFE, #009846);
         background: linear-gradient(#FEFEFE, #009846);
     }
+}
+button[disabled] {
+    opacity: 0.5;
+    cursor: not-allowed;
 }
 button {
     &.clean {
