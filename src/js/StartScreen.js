@@ -5,13 +5,13 @@ export default class StartScreen extends React.Component {
     return (
       <div>
         <header>
-          <h1 className="text-center big">
+          <h1 className="start-title text-center big">
             <span className="text-primary block">+ DIVERSÃO</span>
             <span className="text-secondary block">COM</span>
             <span className="text-tertiary block">NÚMEROS -</span>
           </h1>
         </header>
-        <nav className="text-center">
+        <nav className="game-nav text-center">
           <button
             className="button"
             onClick={this.props.onStartGame}

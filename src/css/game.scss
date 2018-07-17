@@ -4,17 +4,27 @@
 $image: 'http://pancaketheorem.com/stuff/demos/borderimage/wood.png';
 $bgImage:'http://tumodaurbana.com/wp-content/uploads/2013/05/tumodaurbana-expo-dali.jpg';
 section.quadroJogo {    
-    border-width:15px;
+    /* border-width:15px;
     -webkit-border-image: url($image) 200 stretch;
     -moz-border-image: url($image) 200 stretch;
     border-image: url($image) 200 stretch;
     -webkit-box-shadow: inset 0px 0px 1vw rgba(0,0,0,1);
     border-style:solid;    
-    background-image: url('../imgs/green-noise.png');
+    background-image: url('../imgs/green-noise.png'); */
+    background: url(../imgs/quadroMaior.png) center center no-repeat;
+    background-size: auto auto;
+    -webkit-background-size: 100% 100%;
+    -moz-background-size: 100% 100%;
+    -o-background-size: 100% 100%;
+    background-size: 100% 100%;
     position: relative;
     margin: 0 auto;
-    padding: 1%;
-    #top-info {            
+    padding: 5%;
+    min-height: 436px;
+    #game-wrapper {
+        position: relative;
+    }
+    #top-info {
         color: $info;
         padding: 7px 20px 0 20px;
     }

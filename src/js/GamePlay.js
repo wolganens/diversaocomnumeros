@@ -21,35 +21,37 @@ export default class GamePlay extends React.Component {
   render() {
     return (
       <section className="quadroJogo">
-        <GameInfo
-          onGameOver={this.props.onGameOver} 
-          score={this.props.score}
-          isPaused={this.props.isPaused}
-          saveOldTime={this.props.saveOldTime}
-          time={this.props.oldTime}
-        />
-        <GameQuestion
-          onCorrentAnswer={this.correctHandler}
-          onIncorrectAnswer={this.incorrectHandler}
-          question={gerarNovaConta(this.props.score, this.props.level)}
-          isPaused={this.props.isPaused}
-        />
-        <GameActions/>
-        <GameNav/>
-        <ReactAudioPlayer
-          src="/sons/acerto.mp3"
-          ref={(element) => { this.correct = element; }}
-          autoPlay={false}
-          className="hidden"
-          controls
-        />
-        <ReactAudioPlayer
-          src="/sons/erro.mp3"
-          ref={(element) => { this.error = element; }}
-          autoPlay={false}
-          className="hidden"
-          controls
-        />
+        <div id="game-wrapper">
+          <GameInfo
+            onGameOver={this.props.onGameOver} 
+            score={this.props.score}
+            isPaused={this.props.isPaused}
+            saveOldTime={this.props.saveOldTime}
+            time={this.props.oldTime}
+          />
+          <GameQuestion
+            onCorrentAnswer={this.correctHandler}
+            onIncorrectAnswer={this.incorrectHandler}
+            question={gerarNovaConta(this.props.score, this.props.level)}
+            isPaused={this.props.isPaused}
+          />
+          <GameActions/>
+          <GameNav/>
+          <ReactAudioPlayer
+            src="/sons/acerto.mp3"
+            ref={(element) => { this.correct = element; }}
+            autoPlay={false}
+            className="hidden"
+            controls
+          />
+          <ReactAudioPlayer
+            src="/sons/erro.mp3"
+            ref={(element) => { this.error = element; }}
+            autoPlay={false}
+            className="hidden"
+            controls
+          />
+        </div>
       </section>
     );
   }
