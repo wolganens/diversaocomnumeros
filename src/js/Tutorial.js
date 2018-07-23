@@ -161,8 +161,8 @@ function TelaInicial() {
   return (
     <div>
       <img src={imgTelaInicial} alt="imagem da tela inicial"/>
-      <p>Botão Tutorial: Abre o tutorial do jogo.</p>
-      <p>Botão Jogar: Abre a tela de jogo.</p>
+      <p tabindex="3">Botão Tutorial: Abre o tutorial do jogo.</p>
+      <p tabindex="4">Botão Jogar: Abre a tela de jogo.</p>
     </div>
   );
 }
@@ -286,9 +286,9 @@ function TelaJogo() {
   return (
     <div>
       <img src={imgTelaMenu} alt="imagem dos botões do menu"/>
-      <p>Botão iniciar jogo: Inicia o jogo.</p>
-      <p>Botão menu: Abre as opções do menu. </p>
-      <p>Botão som: Ativa e desativa música de fundo.</p>
+      <p tabindex="2">Botão iniciar jogo: Inicia o jogo.</p>
+      <p tabindex="3">Botão menu: Abre as opções do menu. </p>
+      <p tabindex="4">Botão som: Ativa e desativa música de fundo.</p>
     </div>
   );
 }
@@ -296,8 +296,8 @@ function Menu() {
   return (
     <div>
       <img src={imgTelaDificuldade} alt="imagem da escolha da dificuldade"/>
-      <p>Botão tutorial: Abre o tutorial do jogo.</p>
-      <p>Botão dificuldade: Abre as opções de dificuldade.</p>
+      <p tabindex="2">Botão tutorial: Abre o tutorial do jogo.</p>
+      <p tabindex="3">Botão dificuldade: Abre as opções de dificuldade.</p>
     </div>
   );
 }
@@ -305,10 +305,10 @@ function Dificuldade() {
   return (
     <div>
       <img src={imgTelaDificuldade} alt="Tela de seleção de dificuldade"/>
-      <p>Texto informativo: Informa qual dificuldade está ativa.</p>
-      <p>Botão fácil: Seleciona dificuldade fácil, operações de soma. </p>
-      <p>Botão médio: Seleciona dificuldade médio, operações de soma e subtração.</p>
-      <p>Botão difícil: Seleciona dificuldade difícil, operações de soma, subtração e multiplicação. </p>
+      <p tabindex="2">Texto informativo: Informa qual dificuldade está ativa.</p>
+      <p tabindex="3">Botão fácil: Seleciona dificuldade fácil, operações de soma. </p>
+      <p tabindex="4">Botão médio: Seleciona dificuldade médio, operações de soma e subtração.</p>
+      <p tabindex="5">Botão difícil: Seleciona dificuldade difícil, operações de soma, subtração e multiplicação. </p>
     </div>
   );
 }
@@ -321,12 +321,12 @@ function Jogar() {
         ▶ JOGAR
       </button>
       <img className="pull-right imgSmall" src={imgTelaPausarJogo} alt="imagem da tela do jogo depois do jogo iniciado"/>
-      <p>Botão iniciar jogo: Inicia o jogo. </p>
-      <p>Cálculo: Mostra valores e tipo de operação.</p>
-      <p>Campo resposta: Campo para responder a operação.</p>
-      <p>Pontos: Mostra pontuação do jogo.</p>
-      <p>Tempo: Mostra tempo do jogo.</p>
-      <p>Botão pausar e menu: Pausa o jogo e abre o menu. </p>
+      <p tabindex="2">Botão iniciar jogo: Inicia o jogo. </p>
+      <p tabindex="3">Cálculo: Mostra valores e tipo de operação.</p>
+      <p tabindex="4">Campo resposta: Campo para responder a operação.</p>
+      <p tabindex="5">Pontos: Mostra pontuação do jogo.</p>
+      <p tabindex="6">Tempo: Mostra tempo do jogo.</p>
+      <p tabindex="7">Botão pausar e menu: Pausa o jogo e abre o menu. </p>
     </div>
   );
 }
@@ -336,8 +336,8 @@ function Pausar() {
       <img className="pull-left inline" src={imgTelaPausarJogo} alt="imagem da tela do jogo antes de pausar jogo"/>
       <img className="pull-right inline" src={imgTelaJogoPausado} alt="imagem da tela do jogo depois do jogo pausado"/>
       <div className="clearfix"></div>
-      <p>Botão pausar e menu: Pausa o jogo e abre o menu.</p>
-      <p>Botão voltar ao jogo: Tira o jogo do pause.</p>
+      <p tabindex="2">Botão pausar e menu: Pausa o jogo e abre o menu.</p>
+      <p tabindex="3">Botão voltar ao jogo: Tira o jogo do pause.</p>
     </div>
   );
 }
@@ -345,17 +345,17 @@ function FimJogo() {
   return (
     <div>
       <img src={imgTelaFimJogo} alt="imagem da tela do fim do jogo"/>
-      <p>Botão jogar novamente: Abre a tela do jogo.</p>
-      <p>Botão tela inicial: Abri a tela inicial do jogo.</p>
-      <p>Botão compartilhe sua pontuação: Compartilha pontuação no facebook.</p>
+      <p tabindex="2">Botão jogar novamente: Abre a tela do jogo.</p>
+      <p tabindex="3">Botão tela inicial: Abri a tela inicial do jogo.</p>
+      <p tabindex="4">Botão compartilhe sua pontuação: Compartilha pontuação no facebook.</p>
     </div>
   );
 }
 function Atalhos() {
   return (
     <div>
-      <p>Tecla NVDA + Espaço : Alternar entre os modos de foco e de navegação.</p>
-      <p>Shift + Tab : Volta no elemento anterior.</p>
+      <p tabindex="2">Tecla NVDA + Espaço : Alternar entre os modos de foco e de navegação.</p>
+      <p tabindex="3">Shift + Tab : Volta no elemento anterior.</p>
     </div>
   );
 }
