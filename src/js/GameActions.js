@@ -29,6 +29,7 @@ export default class GameActions extends React.Component {
       <div id="game-actions">
         {this.state.enabledMusic ? (
           <button
+            tabindex="5"
             id="enabled-sound"
             className="clean pull-left"
             onClick={this.disableMusic}>
@@ -36,12 +37,13 @@ export default class GameActions extends React.Component {
           </button>
         ) : (
           <button
+            tabindex="5"
             id="disabled-sound"
             className="clean pull-left"
             onClick={this.enableMusic}>
               <img className="img-responsive" src={disabledMusic} alt="Pausar música de fundo"/>
           </button>
-        )}        
+        )}
         <ReactAudioPlayer
             src="/sons/Bubble_Bath.mp3"
             ref={(element) => { this.music = element; }}

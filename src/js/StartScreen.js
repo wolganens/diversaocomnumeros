@@ -21,7 +21,7 @@ export default class StartScreen extends React.Component {
     return (
       <div>
         <header>
-          <h1 className="start-title text-center big">
+          <h1 tabindex="1" className="start-title text-center big">
             <span className="text-primary block">+ DIVERSÃO</span>
             <span className="text-secondary block">COM</span>
             <span className="text-tertiary block">NÚMEROS -</span>

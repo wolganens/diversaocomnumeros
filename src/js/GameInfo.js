@@ -9,7 +9,7 @@ export default class GameInfo extends React.Component {
   */
   constructor(props) {
     super(props)
-    this.state = {      
+    this.state = {
       time: props.time || 60,
       hurryUp: false
     }
@@ -35,7 +35,7 @@ export default class GameInfo extends React.Component {
       }
     }
     /*
-      Detecta se o jogo acabou por falta de tempo, se sim, limpa 
+      Detecta se o jogo acabou por falta de tempo, se sim, limpa
       o contador
     */
     if (this.state.time <= 0) {
@@ -48,8 +48,8 @@ export default class GameInfo extends React.Component {
       Quando o componente é montado, iniciamos um contador de segundos
       Nesse intervalo, dizemos que o método tick() do componente, será executado
       a cada 1 segundo (1000ms)
-    */    
-    this.setState(prevState => {      
+    */
+    this.setState(prevState => {
       return null;
     })
     this.interval = setInterval(() => this.tick(), 1000);
@@ -63,13 +63,13 @@ export default class GameInfo extends React.Component {
   render() {
     return (
       <div id="top-info">
-        <div className="pull-left">Pontos: {this.props.score}</div>
-        <div className="pull-right">Tempo: {this.state.time}</div>
+        <div tabindex="1" className="pull-left">Pontos: {this.props.score}</div>
+        <div tabindex="2" className="pull-right">Tempo: {this.state.time}</div>
         <div className="clearfix"></div>
         {this.state.hurryUp ? (
-          <img id="clock-img" className="absolute right bottom" src={hurryClockImage} alt="relogio do tempo"/>
+          <img tabindex="6" id="clock-img" className="absolute right bottom" src={hurryClockImage} alt="relogio do tempo"/>
         ) : (
-          <img id="clock-img" className="absolute right bottom" src={clockImage} alt="relogio do tempo"/>
+          <img tabindex="6" id="clock-img" className="absolute right bottom" src={clockImage} alt="relogio do tempo"/>
         )}
       </div>
     )

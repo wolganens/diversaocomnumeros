@@ -10,8 +10,8 @@ export default class GameQuestion extends React.Component {
     this.onInputChange = this.onInputChange.bind(this);
   }
   onAnswer(e) {
-    e.preventDefault();    
-    const { n1, n2, op } = this.props.question;    
+    e.preventDefault();
+    const { n1, n2, op } = this.props.question;
     let result = null;
     switch (op) {
       case '+':
@@ -26,7 +26,7 @@ export default class GameQuestion extends React.Component {
       default:
         console.log('Algo de errado não está certo');
         break;
-    }    
+    }
     if (this.state.answer === result) {
       this.props.onCorrentAnswer();
     } else {
@@ -42,7 +42,7 @@ export default class GameQuestion extends React.Component {
     if (isNaN(answer)) {
       this.setState({
         answer: ''
-      })  
+      })
     } else {
       this.setState({
         answer: answer
@@ -52,13 +52,14 @@ export default class GameQuestion extends React.Component {
   render() {
     return (
       <div id="conta" className="big text-center">
-        <span id="conta-valores">
+        <div tabindex="3" id="conta-valores">
           <span>{this.props.question.n1}</span>
-          <span className="absolute left"> {this.props.question.op} </span>
+          <span className="absolute left">{this.props.question.op}</span>
           <span>{this.props.question.n2}</span>
-        </span>
+        </div>
         <form action="#" id="answer-form" onSubmit={this.onAnswer}>
           <input
+            tabindex="4"
             className="small"
             placeholder="Insira a resposta"
             type="number"
