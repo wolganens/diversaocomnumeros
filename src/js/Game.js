@@ -1,5 +1,6 @@
 import React from 'react';
 import '../css/game.css'
+import Loading from './Loading';
 import GameOver from './GameOver';
 import StartScreen from './StartScreen';
 import GamePlay from './GamePlay';
@@ -24,14 +25,15 @@ export default class GameBoard extends React.Component {
       /*Tela de Jogo pausado*/
       PAUSED: 4,
       /*Seleção de Dificuldade*/
-      LEVEL: 5
+      LEVEL: 5,      
     };
     this.state = {
       level: 4,
       score: 0,
       gameState: this.gameStates.START_SCREEN,
       tutorial: false,
-      start: false
+      start: false,
+      loading: true,
     }
     this.onCorrentAnswer = this.onCorrentAnswer.bind(this);
     this.onGameOver = this.onGameOver.bind(this);
@@ -45,6 +47,12 @@ export default class GameBoard extends React.Component {
     this.onChangeLevel = this.onChangeLevel.bind(this);
     this.onDisplayLevel = this.onDisplayLevel.bind(this);
     this.onExitLevel = this.onExitLevel.bind(this);
+    this.componentDidMount = this.componentDidMount.bind(this);
+  }
+  componentDidMount () {
+    this.setState({
+      loading: false
+    });
   }
   onCorrentAnswer() {
     /*
@@ -111,6 +119,9 @@ export default class GameBoard extends React.Component {
   }
   renderMainSection() {
     /*Renderiza a janela principal do jogo de acordo com o estado atual*/
+    if (this.state.loading) {
+      return <Loading/>
+    }
     switch (this.state.gameState) {
       case this.gameStates.START_SCREEN:
         return (
