@@ -1,6 +1,5 @@
 import React from 'react';
 import '../css/game.css'
-import Loading from './Loading';
 import GameOver from './GameOver';
 import StartScreen from './StartScreen';
 import GamePlay from './GamePlay';
@@ -118,10 +117,7 @@ export default class GameBoard extends React.Component {
     this.oldTime = time
   }
   renderMainSection() {
-    /*Renderiza a janela principal do jogo de acordo com o estado atual*/
-    if (this.state.loading) {
-      return <Loading/>
-    }
+    /*Renderiza a janela principal do jogo de acordo com o estado atual*/    
     switch (this.state.gameState) {
       case this.gameStates.START_SCREEN:
         return (

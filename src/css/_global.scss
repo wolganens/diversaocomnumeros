@@ -3,6 +3,9 @@
 @import "bottom-nav";
 @import "utils";
 @import "button-groups";
+body {
+    background-color: white !important;
+}
 /* fontes */
 * {
     -webkit-box-sizing: border-box;

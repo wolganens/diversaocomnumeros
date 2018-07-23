@@ -1,3 +1,6 @@
+body {
+  background-color: #1abc9c;
+}
 .spinner {
   margin: 100px auto;
   width: 50px;
@@ -11,7 +14,7 @@
   height: 100%;
   width: 6px;
   display: inline-block;
-  
+  background-color: #fff;
   -webkit-animation: sk-stretchdelay 1.2s infinite ease-in-out;
   animation: sk-stretchdelay 1.2s infinite ease-in-out;
 }
