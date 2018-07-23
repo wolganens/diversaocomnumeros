@@ -10,9 +10,8 @@ section.quadroJogo {
     border-image: url($image) 200 stretch;
     -webkit-box-shadow: inset 0px 0px 1vw rgba(0,0,0,1);
     border-style:solid;    
-    background-image: url('../imgs/green-noise.png'); */
-    background-color: #006627;
-    background: url(../imgs/quadroMaior.png) center center no-repeat;
+    background-image: url('../imgs/green-noise.png'); */    
+    background: #006627 url(../imgs/quadroMaior.png) center center no-repeat;
     background-size: auto auto;
     -webkit-background-size: 100% 100%;
     -moz-background-size: 100% 100%;
