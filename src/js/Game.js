@@ -11,7 +11,7 @@ import Level from './Level'
 export default class GameBoard extends React.Component {
   constructor(props) {
     super(props)
-    
+
     this.gameStates = {
       /*Tela inicial do jogo*/
       START_SCREEN: 0,
@@ -24,7 +24,7 @@ export default class GameBoard extends React.Component {
       /*Tela de Jogo pausado*/
       PAUSED: 4,
       /*Seleção de Dificuldade*/
-      LEVEL: 5,      
+      LEVEL: 5,
     };
     this.state = {
       level: 4,
@@ -60,7 +60,7 @@ export default class GameBoard extends React.Component {
     */
     this.setState(prevState => ({
       score: prevState.score + 10
-    }));    
+    }));
   }
   onGameOver() {
     this.setState({
@@ -91,7 +91,7 @@ export default class GameBoard extends React.Component {
     }));
   }
   onResumeGame() {
-    this.setState(prevState => {      
+    this.setState(prevState => {
       return ({
         score: prevState.score,
         gameState: this.gameStates.PLAYING
@@ -117,13 +117,13 @@ export default class GameBoard extends React.Component {
     this.oldTime = time
   }
   renderMainSection() {
-    /*Renderiza a janela principal do jogo de acordo com o estado atual*/    
+    /*Renderiza a janela principal do jogo de acordo com o estado atual*/
     switch (this.state.gameState) {
       case this.gameStates.START_SCREEN:
         return (
           <StartScreen
             onStartGame={this.onStartGame}
-            onDisplayTutorial={this.onDisplayTutorial}     
+            onDisplayTutorial={this.onDisplayTutorial}
           />
         );
       case this.gameStates.PLAYING:
@@ -140,7 +140,8 @@ export default class GameBoard extends React.Component {
               level={this.state.level}
             />
             <GameNav>
-              <button 
+              <button
+                tabindex="6"
                 className="button"
                 onClick={this.onPauseGame}
               >
@@ -173,7 +174,7 @@ export default class GameBoard extends React.Component {
         )
       case this.gameStates.LEVEL:
         return (
-          <Level 
+          <Level
             onChangeLevel={this.onChangeLevel}
             onExitLevel={this.onExitLevel}
             level={this.state.level}
@@ -185,10 +186,9 @@ export default class GameBoard extends React.Component {
   }
   render() {
     return (
-      <main className="borda">        
+      <main className="borda">
         {this.renderMainSection()}
       </main>
     );
   }
 }
-

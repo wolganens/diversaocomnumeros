@@ -67,9 +67,9 @@ export default class GameInfo extends React.Component {
         <div tabindex="2" className="pull-right">Tempo: {this.state.time}</div>
         <div className="clearfix"></div>
         {this.state.hurryUp ? (
-          <img tabindex="6" id="clock-img" className="absolute right bottom" src={hurryClockImage} alt="relogio do tempo"/>
+          <img tabindex="7" id="clock-img" className="absolute right bottom" src={hurryClockImage} alt="relogio do tempo"/>
         ) : (
-          <img tabindex="6" id="clock-img" className="absolute right bottom" src={clockImage} alt="relogio do tempo"/>
+          <img tabindex="7" id="clock-img" className="absolute right bottom" src={clockImage} alt="relogio do tempo"/>
         )}
       </div>
     )
