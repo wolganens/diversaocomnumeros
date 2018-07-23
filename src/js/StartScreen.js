@@ -1,7 +1,23 @@
 import React from 'react';
 
 export default class StartScreen extends React.Component {
+
+  constructor(props) {
+    super(props)
+    this.state = {
+      loading: true
+    }
+    this.componentDidMount = this.componentDidMount.bind(this);
+  }
+  componentDidMount() {
+    this.setState({
+      loading: false
+    });
+  }
   render() {
+    if (this.state.loading) {
+      return <p className="text-center big">Carregando...</p>
+    }
     return (
       <div>
         <header>
