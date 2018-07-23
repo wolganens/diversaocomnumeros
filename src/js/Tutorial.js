@@ -69,7 +69,7 @@ export default class Tutorial extends React.Component {
     } else {
       this.setState(prevState => ({
         selected: prevState.selected + 1
-      }));    
+      }));
     }
   }
   handlePrev() {
@@ -80,28 +80,28 @@ export default class Tutorial extends React.Component {
     } else {
       this.setState(prevState => ({
         selected: prevState.selected - 1
-      }));    
+      }));
     }
   }
-  changeHandler(selected) {    
+  changeHandler(selected) {
     this.setState({
       selected
-    });    
+    });
   }
   renderTutorial() {
-    const View = this.tutorials[this.state.selected].view;    
+    const View = this.tutorials[this.state.selected].view;
     return <View/>;
   }
   render() {
     return (
       <div>
         <header>
-          <h1>{this.state.selected == null ? 'Tutorial' : this.tutorials[this.state.selected].title}</h1>
+          <h1 tabindex="1" >{this.state.selected == null ? 'Tutorial' : this.tutorials[this.state.selected].title}</h1>
         </header>
         {this.state.selected == null ? (
-          <nav>
+          <nav tabindex="2">
             <ul id="linksTopicos">
-              {this.tutorials.map((tutorial, index) => 
+              {this.tutorials.map((tutorial, index) =>
                 <li key={index}>
                   <button
                     onClick={() => {this.changeHandler(index)}}
@@ -113,14 +113,14 @@ export default class Tutorial extends React.Component {
           </nav>
         ) : (
           <div>
-            <section>             
+            <section>
               {this.renderTutorial()}
             </section>
           </div>
         )}
         <GameNav>
-          { this.state.selected != null && 
-            <button 
+          { this.state.selected != null &&
+            <button
               className="button"
               onClick={()=>{this.setState({selected: null})}}
             >
@@ -137,7 +137,7 @@ export default class Tutorial extends React.Component {
             <span>
               <button
                 className="button"
-                onClick={this.handlePrev}            
+                onClick={this.handlePrev}
               >
                 Anterior
               </button>
@@ -180,12 +180,12 @@ class MusicaAvisosSonoros extends React.Component {
             loop={false}
           />
           <button
-            className="somIcone" 
+            className="somIcone"
             id="iconeSomIncio"
             onClick={()=>{this.inicio.audioEl.play()}}
             >
             <img src={imgSomAtivadoAzul} alt="icone de som aviso inicio jogo"/>
-              Início do jogo. 
+              Início do jogo.
           </button>
         </li>
         <li>
@@ -200,7 +200,7 @@ class MusicaAvisosSonoros extends React.Component {
           <button
             className="somIcone"
             id="iconeSomMusica"
-            onClick={()=>{this.fundo.audioEl.play()}}                
+            onClick={()=>{this.fundo.audioEl.play()}}
             >
             <img src={imgSomAtivadoAzul} alt="icone de som música do jogo"/>
               Música de fundo.
@@ -234,7 +234,7 @@ class MusicaAvisosSonoros extends React.Component {
             loop={false}
           />
           <button
-            className="somIcone" 
+            className="somIcone"
             id="iconeSomErro"
             onClick={()=>{this.errada.audioEl.play()}}
             >
@@ -316,7 +316,7 @@ function Jogar() {
   return (
     <div>
       <button
-        className="button"        
+        className="button"
       >
         ▶ JOGAR
       </button>

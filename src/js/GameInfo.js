@@ -10,7 +10,7 @@ export default class GameInfo extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      time: props.time || 60,
+      time: props.time || 120,
       hurryUp: false
     }
   }
