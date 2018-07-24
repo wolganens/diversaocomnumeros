@@ -23,7 +23,7 @@ export default class GamePlay extends React.Component {
       <section className="quadroJogo">
         <div id="game-wrapper">
           <GameInfo
-            onGameOver={this.props.onGameOver} 
+            onGameOver={this.props.onGameOver}
             score={this.props.score}
             isPaused={this.props.isPaused}
             saveOldTime={this.props.saveOldTime}
@@ -56,18 +56,19 @@ export default class GamePlay extends React.Component {
     );
   }
 }
-function gerarNovaConta (pontos, dificuldade) {  
+function gerarNovaConta (pontos, dificuldade) {
   let n1;
+  let opsig;
   let op;
   let n2;
-  
+
   let probabilidadeSoma;
   let probabilidadeSubtracao;
   let probabilidadeMultiplicacao;
   let transportePermitido;
   let n1Maximo;
   let n2Maximo;
-  
+
   /* com base na dificuldade */
   switch(dificuldade){
     case 1:
@@ -105,37 +106,40 @@ function gerarNovaConta (pontos, dificuldade) {
         const normalizador = probabilidadeSoma + probabilidadeSubtracao + probabilidadeMultiplicacao;
         probabilidadeSoma = probabilidadeSoma / normalizador;
         probabilidadeSubtracao = probabilidadeSubtracao / normalizador;
-        probabilidadeMultiplicacao = probabilidadeMultiplicacao / normalizador;          
-        break;        
+        probabilidadeMultiplicacao = probabilidadeMultiplicacao / normalizador;
+        break;
   }
-  
+
   /* define a operação */
-  var probabilidade = Math.random();        
+  var probabilidade = Math.random();
   if(probabilidade < probabilidadeSoma){
-      op = "+";
+      opsig = "+";
+      op = "Mais";
   }else if(probabilidade < (probabilidadeSoma + probabilidadeSubtracao)){
-      op = "-";
+      opsig = "-";
+      op = "Menos"
   }else if(probabilidade < (probabilidadeSoma + probabilidadeSubtracao + probabilidadeMultiplicacao)){
-      op = "x";
+      opsig = "x";
+      op = "Vezes";
   }else{
-      /* jamais deveria chegar nesse ponto, mas tenho que usar essa 
+      /* jamais deveria chegar nesse ponto, mas tenho que usar essa
        * verificação por segurança e lançar a exceção adequada */
       console.log("Problema na escolha de operação na Fábrica de contas: fora das probabilidades de escolha");
   }
-  
+
   do{
       /* define os valores */
-      if(op === "+"){
+      if(opsig === "+"){
           n1 = Math.round(Math.random() * n1Maximo);
           n2 = Math.round(Math.random() * n2Maximo);
-      }else if(op === "-"){
+      }else if(opsig === "-"){
           do{
               n1 = Math.round(Math.random() * n1Maximo);
               n2 = Math.round(Math.random() * n2Maximo);
           /* impede resultados negativos */
           }while(n1 < n2);
-      }else if(op === "x"){
-          /* usa grandezas reduzidas (7% do valor) no caso de multiplicações */                
+      }else if(opsig === "x"){
+          /* usa grandezas reduzidas (7% do valor) no caso de multiplicações */
           n1 = Math.round(Math.random() * n1Maximo * 0.08);
           n2 = Math.round(Math.random() * n2Maximo * 0.04);
       }
@@ -162,7 +166,7 @@ function gerarNovaConta (pontos, dificuldade) {
       alert(n2Array); */
       /* debug */
       for(var i = 0; i < n1Array.length; i++){
-        switch(op){
+        switch(opsig){
           case "+":
             if((parseInt(n1Array[i], 10) + parseInt(n2Array[i], 10)) > 9){
               /* debug */
@@ -185,7 +189,7 @@ function gerarNovaConta (pontos, dificuldade) {
       }
   /* repete enquanto não for permitido transporte E houver transporte */
   }while(!transportePermitido && houveTransporte);
-  
+
   /* instanciar, atualizar na View e devolver Conta */
-  return {n1: parseInt(n1, 10), n2: parseInt(n2, 10), op};
+  return {n1: parseInt(n1, 10), n2: parseInt(n2, 10), opsig, op};
 }
