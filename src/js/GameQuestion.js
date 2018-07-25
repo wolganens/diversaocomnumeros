@@ -56,11 +56,13 @@ export default class GameQuestion extends React.Component {
   render() {
     return (
 
-      <div id="conta" className="big text-center">
-        <div tabindex="3" id="conta-valores">
+    <div id="conta" className="big text-center" aria-live="polite">
+        <div tabindex="3" id="conta-valores"
+          role="math"
+          aria-label={this.props.question.n1 + " " + this.props.question.op + " " + this.props.question.n2}
+        >
           <span>{this.props.question.n1}</span>
-          <span aria-hidden="true" className="absolute left">{this.props.question.opsig}</span>
-          <span aria-hidden="false" style={this.oculto}>{this.props.question.op}</span>
+          <span className="absolute left">{this.props.question.opsig}</span>
           <span>{this.props.question.n2}</span>
         </div>
         <form action="#" id="answer-form" onSubmit={this.onAnswer}>

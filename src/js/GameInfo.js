@@ -63,8 +63,8 @@ export default class GameInfo extends React.Component {
   render() {
     return (
       <div id="top-info">
-        <div tabindex="1" className="pull-left">Pontos: {this.props.score}</div>
-        <div tabindex="2" className="pull-right">Tempo: {this.state.time}</div>
+        <div tabindex="1" aria-label={this.props.score + "Pontos"} aria-live="polite" className="pull-left">Pontos: {this.props.score}</div>
+        <div tabindex="2" aria-label={"Restam " + this.state.time + " Segundos"} className="pull-right">Tempo: {this.state.time}</div>
         <div className="clearfix"></div>
         {this.state.hurryUp ? (
           <img tabindex="7" id="clock-img" className="absolute right bottom" src={hurryClockImage} alt="relogio do tempo"/>

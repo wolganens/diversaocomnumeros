@@ -22,9 +22,10 @@ export default class StartScreen extends React.Component {
       <div>
         <header>
           <h1 tabindex="1" className="start-title text-center big">
-            <span className="text-primary block">+ DIVERSÃO</span>
+            <span className="text-primary block">
+            <span aria-hidden="true">+</span> DIVERSÃO</span>
             <span className="text-secondary block">COM</span>
-            <span className="text-tertiary block">NÚMEROS -</span>
+            <span className="text-tertiary block">NÚMEROS <span aria-hidden="true">-</span></span>
           </h1>
         </header>
         <nav className="game-nav text-center">
@@ -33,7 +34,7 @@ export default class StartScreen extends React.Component {
               className="button"
               onClick={this.props.onStartGame}
             >
-              ▶ JOGAR
+              <span aria-hidden="true">▶</span> JOGAR
             </button>
             <button
               className="button"
