@@ -96,14 +96,15 @@ export default class Tutorial extends React.Component {
     return (
       <div>
         <header>
-          <h1 tabindex="1" >{this.state.selected == null ? 'Tutorial' : this.tutorials[this.state.selected].title}</h1>
+          <h1 tabindex="1" aria-live="assertive" >{this.state.selected == null ? 'Tutorial' : this.tutorials[this.state.selected].title}</h1>
         </header>
         {this.state.selected == null ? (
-          <nav tabindex="2">
+          <nav>
             <ul id="linksTopicos">
               {this.tutorials.map((tutorial, index) =>
                 <li key={index}>
                   <button
+                    tabindex={index+1}
                     onClick={() => {this.changeHandler(index)}}
                     className="clean"
                     title={tutorial.title}>{tutorial.title}</button>
@@ -122,6 +123,7 @@ export default class Tutorial extends React.Component {
           { this.state.selected != null &&
             <button
               className="button"
+              tabindex="8"
               onClick={()=>{this.setState({selected: null})}}
             >
                 Tutorial
@@ -129,6 +131,7 @@ export default class Tutorial extends React.Component {
           }
           <button
             className="button"
+            tabindex="11"
             onClick={this.props.onStartGame}
           >
             Jogar
@@ -136,12 +139,14 @@ export default class Tutorial extends React.Component {
           {this.state.selected != null && (
             <span>
               <button
+                tabindex="9"
                 className="button"
                 onClick={this.handlePrev}
               >
                 Anterior
               </button>
               <button
+                tabindex="10"
                 className="button"
                 onClick={this.handleNext}
                 disabled={this.state.selected === this.tutorials.length - 1}
@@ -180,6 +185,8 @@ class MusicaAvisosSonoros extends React.Component {
             loop={false}
           />
           <button
+            tabindex="1"
+            aria-label="música de início de jogo"
             className="somIcone"
             id="iconeSomIncio"
             onClick={()=>{this.inicio.audioEl.play()}}
@@ -188,7 +195,7 @@ class MusicaAvisosSonoros extends React.Component {
               Início do jogo.
           </button>
         </li>
-        <li>
+        <li >
           <ReactAudioPlayer
             src="/sons/musica.mp3"
             ref={(element) => { this.fundo = element; }}
@@ -198,6 +205,8 @@ class MusicaAvisosSonoros extends React.Component {
             loop={false}
           />
           <button
+            tabindex="2"
+            aria-label="música de fundo do jogo"
             className="somIcone"
             id="iconeSomMusica"
             onClick={()=>{this.fundo.audioEl.play()}}
@@ -216,6 +225,8 @@ class MusicaAvisosSonoros extends React.Component {
             loop={false}
           />
           <button
+            tabindex="3"
+            aria-label="som de resposta certa"
             className="somIcone"
             id="iconeSomAcerto"
             onClick={()=>{this.certa.audioEl.play()}}
@@ -234,6 +245,8 @@ class MusicaAvisosSonoros extends React.Component {
             loop={false}
           />
           <button
+            tabindex="4"
+            aria-label="som de resposta errada"
             className="somIcone"
             id="iconeSomErro"
             onClick={()=>{this.errada.audioEl.play()}}
@@ -242,7 +255,7 @@ class MusicaAvisosSonoros extends React.Component {
               Resposta errada.
           </button>
         </li>
-        <li>
+        <li >
           <ReactAudioPlayer
             src="/sons/dezSegundos.mp3"
             ref={(element) => { this.dezSeg = element; }}
@@ -252,6 +265,8 @@ class MusicaAvisosSonoros extends React.Component {
             loop={false}
           />
           <button
+            tabindex="5"
+            aria-label="som de tempo acabando"
             className="somIcone"
             id="iconeSomTempoAcab"
             onClick={()=>{this.dezSeg.audioEl.play()}}
@@ -260,7 +275,7 @@ class MusicaAvisosSonoros extends React.Component {
               Tempo acabando.
           </button>
         </li>
-        <li>
+        <li >
           <ReactAudioPlayer
             src="/sons/fimJogo.mp3"
             ref={(element) => { this.fimJogo = element; }}
@@ -270,6 +285,8 @@ class MusicaAvisosSonoros extends React.Component {
             loop={false}
           />
           <button
+            tabindex="6"
+            aria-label="som de fim de jogo"
             className="somIcone"
             id="iconeSomFimJogo"
             onClick={()=>{this.fimJogo.audioEl.play()}}

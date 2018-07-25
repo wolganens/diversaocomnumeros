@@ -9,6 +9,10 @@ export default class GameInfo extends React.Component {
   */
   constructor(props) {
     super(props)
+    this.escondido = {
+      position: 'absolute',
+      opacity: 0
+    }
     this.state = {
       time: props.time || 120,
       hurryUp: false
@@ -63,13 +67,16 @@ export default class GameInfo extends React.Component {
   render() {
     return (
       <div id="top-info">
-        <div tabindex="1" aria-label={this.props.score + "Pontos"} aria-live="polite" className="pull-left">Pontos: {this.props.score}</div>
-        <div tabindex="2" aria-label={"Restam " + this.state.time + " Segundos"} className="pull-right">Tempo: {this.state.time}</div>
+        <div tabindex="1" className="pull-left">Pontos: {this.props.score}</div>
+        <div tabindex="2" className="pull-right">
+          <div aria-hidden="true" >Tempo: {this.state.time}</div>
+          <div role="log" aria-live="polite" style={this.escondido}>{parseInt(((this.state.time-1)/10)+1) + "0 segundos restantes"}</div>
+        </div>
         <div className="clearfix"></div>
         {this.state.hurryUp ? (
-          <img tabindex="7" id="clock-img" className="absolute right bottom" src={hurryClockImage} alt="relogio do tempo"/>
+          <img id="clock-img" className="absolute right bottom" src={hurryClockImage} alt="relogio do tempo"/>
         ) : (
-          <img tabindex="7" id="clock-img" className="absolute right bottom" src={clockImage} alt="relogio do tempo"/>
+          <img id="clock-img" className="absolute right bottom" src={clockImage} alt="relogio do tempo"/>
         )}
       </div>
     )
