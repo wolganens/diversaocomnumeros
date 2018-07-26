@@ -50,10 +50,10 @@ export default class GameQuestion extends React.Component {
     }
   }
   render() {
+    const { n1, n2, op } = this.props;
     return (
-
-    <div id="conta" className="big text-center" >
-        <div tabindex="3" id="conta-valores" role="log" aria-live="polite" aria-label={this.props.question.n1 + " " + this.props.question.op + " " + this.props.question.n2}>
+      <div id="conta" className="big text-center" >
+        <div tabindex="3" id="conta-valores" role="math" aria-live="polite" aria-label={`${n1} ${op} ${n2}`}>
           <span aria-hidden="true" >{this.props.question.n1}</span>
           <span aria-hidden="true" className="absolute left">{this.props.question.opsig}</span>
           <span aria-hidden="true" >{this.props.question.n2}</span>
