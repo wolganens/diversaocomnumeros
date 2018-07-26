@@ -53,16 +53,17 @@ export default class GameQuestion extends React.Component {
     return (
 
     <div id="conta" className="big text-center" >
-        <div tabindex="3" id="conta-valores" role="alert" aria-live="assertive" aria-label={this.props.question.n1 + " " + this.props.question.op + " " + this.props.question.n2}>
-          <span aria-hidden="true">{this.props.question.n1}</span>
-          <span aria-hidden="true"className="absolute left">{this.props.question.opsig}</span>
-          <span aria-hidden="true">{this.props.question.n2}</span>
+        <div tabindex="3" id="conta-valores" role="log" aria-live="polite" aria-label={this.props.question.n1 + " " + this.props.question.op + " " + this.props.question.n2}>
+          <span aria-hidden="true" >{this.props.question.n1}</span>
+          <span aria-hidden="true" className="absolute left">{this.props.question.opsig}</span>
+          <span aria-hidden="true" >{this.props.question.n2}</span>
         </div>
         <form action="#" id="answer-form" onSubmit={this.onAnswer}>
           <input
+            role="status"
             tabindex="4"
             className="small"
-            placeholder="Insira a resposta"
+            placeholder="digite a resposta"
             type="number"
             value={this.state.answer && parseInt(this.state.answer, 10)}
             onChange={this.onInputChange}

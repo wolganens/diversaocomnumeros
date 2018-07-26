@@ -23,6 +23,7 @@ export default class GameInfo extends React.Component {
       Este método é responsável por descontar 1 unidade do campo time no estado
       do componenente
     */
+
     this.setState(prevState => ({
       time: prevState.time - 1
     }));
@@ -38,6 +39,7 @@ export default class GameInfo extends React.Component {
         });
       }
     }
+
     /*
       Detecta se o jogo acabou por falta de tempo, se sim, limpa
       o contador
@@ -68,10 +70,8 @@ export default class GameInfo extends React.Component {
     return (
       <div id="top-info">
         <div tabindex="1" className="pull-left">Pontos: {this.props.score}</div>
-        <div tabindex="2" className="pull-right">
-          <div aria-hidden="true" >Tempo: {this.state.time}</div>
-          <div role="log" aria-live="polite" style={this.escondido}>{parseInt(((this.state.time-1)/10)+1) + "0 segundos restantes"}</div>
-        </div>
+        <div aria-hidden="true" className="pull-right">Tempo: {this.state.time}</div>
+        <div aria-live="assertive" aria-atomic="false" aria-label={parseInt(((this.state.time)/10)+1) + "0 segundos restantes"} style={this.escondido}></div>
         <div className="clearfix"></div>
         {this.state.hurryUp ? (
           <img id="clock-img" className="absolute right bottom" src={hurryClockImage} alt="relogio do tempo"/>
