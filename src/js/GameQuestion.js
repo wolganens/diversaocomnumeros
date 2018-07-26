@@ -8,6 +8,7 @@ export default class GameQuestion extends React.Component {
     }
     this.onAnswer = this.onAnswer.bind(this);
     this.onInputChange = this.onInputChange.bind(this);
+    this.componentDidMount = this.componentDidMount.bind(this);
   }
   onAnswer(e) {
     e.preventDefault();
@@ -49,14 +50,21 @@ export default class GameQuestion extends React.Component {
       })
     }
   }
+  componentDidMount () {
+    this.nameInput.focus(); 
+  }
   render() {
-    const { n1, n2, op } = this.props.question;
+    const { n1, n2, op, opsig } = this.props.question;
     return (
-      <div id="conta" className="big text-center" >
-        <div tabindex="3" id="conta-valores" role="math" aria-live="polite" aria-label={`${n1} ${op} ${n2}`}>
-          <span aria-hidden="true" >{this.props.question.n1}</span>
-          <span aria-hidden="true" className="absolute left">{this.props.question.opsig}</span>
-          <span aria-hidden="true" >{this.props.question.n2}</span>
+      <div id="conta" className="big text-center">      
+        <div tabindex="3" id="conta-valores" role="math" aria-live="assertive" aria-label={`${n1} ${op} ${n2}`}>
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <mrow>
+            <mn>{n1}</mn>
+            <mo className="absolute left">{opsig}</mo>
+            <mn> {n2}</mn>
+          </mrow>
+        </math>
         </div>
         <form action="#" id="answer-form" onSubmit={this.onAnswer}>
           <input
@@ -67,6 +75,7 @@ export default class GameQuestion extends React.Component {
             type="number"
             value={this.state.answer && parseInt(this.state.answer, 10)}
             onChange={this.onInputChange}
+            ref={(input) => { this.nameInput = input; }} 
             disabled={this.props.gameOver || this.props.isPaused}
           />
         </form>
