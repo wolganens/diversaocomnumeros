@@ -71,7 +71,7 @@ export default class GameInfo extends React.Component {
       <div id="top-info">
         <div tabIndex="1" className="pull-left">Pontos: {this.props.score}</div>
         <div aria-hidden="true" className="pull-right">Tempo: {this.state.time}</div>
-        <div aria-live="assertive" aria-atomic="false" aria-label={parseInt(((this.state.time)/10)+1) + "0 segundos restantes"} style={this.escondido}></div>
+        <div aria-live="assertive" aria-atomic="false" aria-label={parseInt(((this.state.time)/10)+1, 10) + "0 segundos restantes"} style={this.escondido}></div>
         <div className="clearfix"></div>
         {this.state.hurryUp ? (
           <img id="clock-img" className="absolute right bottom" src={hurryClockImage} alt="relogio do tempo"/>

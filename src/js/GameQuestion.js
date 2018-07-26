@@ -12,7 +12,7 @@ export default class GameQuestion extends React.Component {
   }
   onAnswer(e) {
     e.preventDefault();
-    const { n1, n2, opsig, op } = this.props.question;
+    const { n1, n2, opsig} = this.props.question;
     let result = null;
     switch (opsig) {
       case '+':
@@ -56,7 +56,7 @@ export default class GameQuestion extends React.Component {
     this.nameInput.focus(); 
   }
   renderMath() {
-    const { n1, n2, op, opsig } = this.props.question;
+    const { n1, n2, opsig } = this.props.question;
     return (
       <math xmlns="http://www.w3.org/1998/Math/MathML">
         <mrow>
@@ -68,7 +68,7 @@ export default class GameQuestion extends React.Component {
     );
   }
   render() {
-    const { n1, n2, op, opsig } = this.props.question;
+    const { n1, n2, op } = this.props.question;
     return (
       <div id="conta" className="big text-center">      
         <div tabIndex="3" id="conta-valores" role="math" aria-live="assertive" aria-label={`${n1} ${op} ${n2}`}>
