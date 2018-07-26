@@ -96,7 +96,7 @@ export default class Tutorial extends React.Component {
     return (
       <div>
         <header>
-          <h1 tabindex="1" aria-live="assertive" >{this.state.selected == null ? 'Tutorial' : this.tutorials[this.state.selected].title}</h1>
+          <h1 tabIndex="1" aria-live="assertive" >{this.state.selected == null ? 'Tutorial' : this.tutorials[this.state.selected].title}</h1>
         </header>
         {this.state.selected == null ? (
           <nav>
@@ -104,7 +104,7 @@ export default class Tutorial extends React.Component {
               {this.tutorials.map((tutorial, index) =>
                 <li key={index}>
                   <button
-                    tabindex={index+1}
+                    tabIndex={index+1}
                     onClick={() => {this.changeHandler(index)}}
                     className="clean"
                     title={tutorial.title}>{tutorial.title}</button>
@@ -123,7 +123,7 @@ export default class Tutorial extends React.Component {
           { this.state.selected != null &&
             <button
               className="button"
-              tabindex="8"
+              tabIndex="8"
               onClick={()=>{this.setState({selected: null})}}
             >
                 Tutorial
@@ -131,7 +131,7 @@ export default class Tutorial extends React.Component {
           }
           <button
             className="button"
-            tabindex="11"
+            tabIndex="11"
             onClick={this.props.onStartGame}
           >
             Jogar
@@ -139,14 +139,14 @@ export default class Tutorial extends React.Component {
           {this.state.selected != null && (
             <span>
               <button
-                tabindex="9"
+                tabIndex="9"
                 className="button"
                 onClick={this.handlePrev}
               >
                 Anterior
               </button>
               <button
-                tabindex="10"
+                tabIndex="10"
                 className="button"
                 onClick={this.handleNext}
                 disabled={this.state.selected === this.tutorials.length - 1}
@@ -166,8 +166,8 @@ function TelaInicial() {
   return (
     <div>
       <img src={imgTelaInicial} alt="imagem da tela inicial"/>
-      <p tabindex="3">Botão Tutorial: Abre o tutorial do jogo.</p>
-      <p tabindex="4">Botão Jogar: Abre a tela de jogo.</p>
+      <p tabIndex="3">Botão Tutorial: Abre o tutorial do jogo.</p>
+      <p tabIndex="4">Botão Jogar: Abre a tela de jogo.</p>
     </div>
   );
 }
@@ -185,7 +185,7 @@ class MusicaAvisosSonoros extends React.Component {
             loop={false}
           />
           <button
-            tabindex="1"
+            tabIndex="1"
             aria-label="música de início de jogo"
             className="somIcone"
             id="iconeSomIncio"
@@ -205,7 +205,7 @@ class MusicaAvisosSonoros extends React.Component {
             loop={false}
           />
           <button
-            tabindex="2"
+            tabIndex="2"
             aria-label="música de fundo do jogo"
             className="somIcone"
             id="iconeSomMusica"
@@ -225,7 +225,7 @@ class MusicaAvisosSonoros extends React.Component {
             loop={false}
           />
           <button
-            tabindex="3"
+            tabIndex="3"
             aria-label="som de resposta certa"
             className="somIcone"
             id="iconeSomAcerto"
@@ -245,7 +245,7 @@ class MusicaAvisosSonoros extends React.Component {
             loop={false}
           />
           <button
-            tabindex="4"
+            tabIndex="4"
             aria-label="som de resposta errada"
             className="somIcone"
             id="iconeSomErro"
@@ -265,7 +265,7 @@ class MusicaAvisosSonoros extends React.Component {
             loop={false}
           />
           <button
-            tabindex="5"
+            tabIndex="5"
             aria-label="som de tempo acabando"
             className="somIcone"
             id="iconeSomTempoAcab"
@@ -285,7 +285,7 @@ class MusicaAvisosSonoros extends React.Component {
             loop={false}
           />
           <button
-            tabindex="6"
+            tabIndex="6"
             aria-label="som de fim de jogo"
             className="somIcone"
             id="iconeSomFimJogo"
@@ -303,9 +303,9 @@ function TelaJogo() {
   return (
     <div>
       <img src={imgTelaMenu} alt="imagem dos botões do menu"/>
-      <p tabindex="2">Botão iniciar jogo: Inicia o jogo.</p>
-      <p tabindex="3">Botão menu: Abre as opções do menu. </p>
-      <p tabindex="4">Botão som: Ativa e desativa música de fundo.</p>
+      <p tabIndex="2">Botão iniciar jogo: Inicia o jogo.</p>
+      <p tabIndex="3">Botão menu: Abre as opções do menu. </p>
+      <p tabIndex="4">Botão som: Ativa e desativa música de fundo.</p>
     </div>
   );
 }
@@ -313,8 +313,8 @@ function Menu() {
   return (
     <div>
       <img src={imgTelaDificuldade} alt="imagem da escolha da dificuldade"/>
-      <p tabindex="2">Botão tutorial: Abre o tutorial do jogo.</p>
-      <p tabindex="3">Botão dificuldade: Abre as opções de dificuldade.</p>
+      <p tabIndex="2">Botão tutorial: Abre o tutorial do jogo.</p>
+      <p tabIndex="3">Botão dificuldade: Abre as opções de dificuldade.</p>
     </div>
   );
 }
@@ -322,10 +322,10 @@ function Dificuldade() {
   return (
     <div>
       <img src={imgTelaDificuldade} alt="Tela de seleção de dificuldade"/>
-      <p tabindex="2">Texto informativo: Informa qual dificuldade está ativa.</p>
-      <p tabindex="3">Botão fácil: Seleciona dificuldade fácil, operações de soma. </p>
-      <p tabindex="4">Botão médio: Seleciona dificuldade médio, operações de soma e subtração.</p>
-      <p tabindex="5">Botão difícil: Seleciona dificuldade difícil, operações de soma, subtração e multiplicação. </p>
+      <p tabIndex="2">Texto informativo: Informa qual dificuldade está ativa.</p>
+      <p tabIndex="3">Botão fácil: Seleciona dificuldade fácil, operações de soma. </p>
+      <p tabIndex="4">Botão médio: Seleciona dificuldade médio, operações de soma e subtração.</p>
+      <p tabIndex="5">Botão difícil: Seleciona dificuldade difícil, operações de soma, subtração e multiplicação. </p>
     </div>
   );
 }
@@ -338,12 +338,12 @@ function Jogar() {
         ▶ JOGAR
       </button>
       <img className="pull-right imgSmall" src={imgTelaPausarJogo} alt="imagem da tela do jogo depois do jogo iniciado"/>
-      <p tabindex="2">Botão iniciar jogo: Inicia o jogo. </p>
-      <p tabindex="3">Cálculo: Mostra valores e tipo de operação.</p>
-      <p tabindex="4">Campo resposta: Campo para responder a operação.</p>
-      <p tabindex="5">Pontos: Mostra pontuação do jogo.</p>
-      <p tabindex="6">Tempo: Mostra tempo do jogo.</p>
-      <p tabindex="7">Botão pausar e menu: Pausa o jogo e abre o menu. </p>
+      <p tabIndex="2">Botão iniciar jogo: Inicia o jogo. </p>
+      <p tabIndex="3">Cálculo: Mostra valores e tipo de operação.</p>
+      <p tabIndex="4">Campo resposta: Campo para responder a operação.</p>
+      <p tabIndex="5">Pontos: Mostra pontuação do jogo.</p>
+      <p tabIndex="6">Tempo: Mostra tempo do jogo.</p>
+      <p tabIndex="7">Botão pausar e menu: Pausa o jogo e abre o menu. </p>
     </div>
   );
 }
@@ -353,8 +353,8 @@ function Pausar() {
       <img className="pull-left inline" src={imgTelaPausarJogo} alt="imagem da tela do jogo antes de pausar jogo"/>
       <img className="pull-right inline" src={imgTelaJogoPausado} alt="imagem da tela do jogo depois do jogo pausado"/>
       <div className="clearfix"></div>
-      <p tabindex="2">Botão pausar e menu: Pausa o jogo e abre o menu.</p>
-      <p tabindex="3">Botão voltar ao jogo: Tira o jogo do pause.</p>
+      <p tabIndex="2">Botão pausar e menu: Pausa o jogo e abre o menu.</p>
+      <p tabIndex="3">Botão voltar ao jogo: Tira o jogo do pause.</p>
     </div>
   );
 }
@@ -362,17 +362,17 @@ function FimJogo() {
   return (
     <div>
       <img src={imgTelaFimJogo} alt="imagem da tela do fim do jogo"/>
-      <p tabindex="2">Botão jogar novamente: Abre a tela do jogo.</p>
-      <p tabindex="3">Botão tela inicial: Abri a tela inicial do jogo.</p>
-      <p tabindex="4">Botão compartilhe sua pontuação: Compartilha pontuação no facebook.</p>
+      <p tabIndex="2">Botão jogar novamente: Abre a tela do jogo.</p>
+      <p tabIndex="3">Botão tela inicial: Abri a tela inicial do jogo.</p>
+      <p tabIndex="4">Botão compartilhe sua pontuação: Compartilha pontuação no facebook.</p>
     </div>
   );
 }
 function Atalhos() {
   return (
     <div>
-      <p tabindex="2">Tecla NVDA + Espaço : Alternar entre os modos de foco e de navegação.</p>
-      <p tabindex="3">Shift + Tab : Volta no elemento anterior.</p>
+      <p tabIndex="2">Tecla NVDA + Espaço : Alternar entre os modos de foco e de navegação.</p>
+      <p tabIndex="3">Shift + Tab : Volta no elemento anterior.</p>
     </div>
   );
 }

@@ -29,7 +29,7 @@ export default class GameActions extends React.Component {
       <div id="game-actions">
         {this.state.enabledMusic ? (
           <button
-            tabindex="5"
+            tabIndex="5"
             id="enabled-sound"
             className="clean pull-left"
             onClick={this.disableMusic}>
@@ -37,7 +37,7 @@ export default class GameActions extends React.Component {
           </button>
         ) : (
           <button
-            tabindex="5"
+            tabIndex="5"
             id="disabled-sound"
             className="clean pull-left"
             onClick={this.enableMusic}>

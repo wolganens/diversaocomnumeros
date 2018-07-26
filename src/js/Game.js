@@ -141,7 +141,7 @@ export default class GameBoard extends React.Component {
             />
             <GameNav>
               <button
-                tabindex="6"
+                tabIndex="6"
                 className="button"
                 onClick={this.onPauseGame}
               >

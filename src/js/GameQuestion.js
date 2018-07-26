@@ -39,6 +39,8 @@ export default class GameQuestion extends React.Component {
   }
   onInputChange(e) {
     e.preventDefault();
+    e.stopPropagation();
+    console.log('mudou')
     const answer = parseInt(e.target.value, 10);
     if (isNaN(answer)) {
       this.setState({
@@ -53,23 +55,29 @@ export default class GameQuestion extends React.Component {
   componentDidMount () {
     this.nameInput.focus(); 
   }
+  renderMath() {
+    const { n1, n2, op, opsig } = this.props.question;
+    return (
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <mrow>
+          <mn>{n1}</mn>
+          <mo>{opsig}</mo>
+          <mn>{n2}</mn>
+        </mrow>
+      </math>
+    );
+  }
   render() {
     const { n1, n2, op, opsig } = this.props.question;
     return (
       <div id="conta" className="big text-center">      
-        <div tabindex="3" id="conta-valores" role="math" aria-live="assertive" aria-label={`${n1} ${op} ${n2}`}>
-        <math xmlns="http://www.w3.org/1998/Math/MathML">
-          <mrow>
-            <mn>{n1}</mn>
-            <mo className="absolute left">{opsig}</mo>
-            <mn> {n2}</mn>
-          </mrow>
-        </math>
+        <div tabIndex="3" id="conta-valores" role="math" aria-live="assertive" aria-label={`${n1} ${op} ${n2}`}>
+          {this.renderMath()}
         </div>
         <form action="#" id="answer-form" onSubmit={this.onAnswer}>
           <input
             role="status"
-            tabindex="4"
+            tabIndex="4"
             className="small"
             placeholder="digite a resposta"
             type="number"

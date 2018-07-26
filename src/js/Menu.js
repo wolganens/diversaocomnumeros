@@ -15,7 +15,7 @@ export default class Menu extends React.Component {
             onClick={this.props.onDisplayLevel}
             className="button">Dificuldade
           </button>
-          <div tabindex="1" className="grand">Jogo Pausado!</div>
+          <div tabIndex="1" className="grand">Jogo Pausado!</div>
           <button
             onClick={this.props.onResumeGame}
             className="button">Continuar Jogando

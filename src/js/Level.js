@@ -22,8 +22,8 @@ export default class Level extends React.Component {
   render () {
     return (
       <section className="text-board text-center quadroJogo">
-        <div tabindex="1" className="medium">A dificuldade atual é: {this.displayLevelText()}</div>
-        <div tabindex="2"className="medium">Selecione a dificuldade: </div>
+        <div tabIndex="1" className="medium">A dificuldade atual é: {this.displayLevelText()}</div>
+        <div tabIndex="2"className="medium">Selecione a dificuldade: </div>
         <div className="btn-group">
           <button onClick={() => {this.props.onChangeLevel(1);this.props.onExitLevel()}} className="button">Fácil</button>
           <button onClick={() => {this.props.onChangeLevel(2);this.props.onExitLevel()}} className="button">Médio</button>

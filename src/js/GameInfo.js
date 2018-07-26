@@ -69,7 +69,7 @@ export default class GameInfo extends React.Component {
   render() {
     return (
       <div id="top-info">
-        <div tabindex="1" className="pull-left">Pontos: {this.props.score}</div>
+        <div tabIndex="1" className="pull-left">Pontos: {this.props.score}</div>
         <div aria-hidden="true" className="pull-right">Tempo: {this.state.time}</div>
         <div aria-live="assertive" aria-atomic="false" aria-label={parseInt(((this.state.time)/10)+1) + "0 segundos restantes"} style={this.escondido}></div>
         <div className="clearfix"></div>
