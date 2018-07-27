@@ -6,12 +6,10 @@ export default class GameQuestion extends React.Component {
     this.state = {
       answer: ''
     }
-    this.onAnswer = this.onAnswer.bind(this);
-    this.onInputChange = this.onInputChange.bind(this);
-    this.componentDidMount = this.componentDidMount.bind(this);
+    this.onAnswer = this.onAnswer.bind(this);    
+    this.getOperatorTag = this.getOperatorTag.bind(this);
   }
-  onAnswer(e) {
-    e.preventDefault();
+  onAnswer(answer) {    
     const { n1, n2, opsig} = this.props.question;
     let result = null;
     switch (opsig) {
@@ -28,19 +26,71 @@ export default class GameQuestion extends React.Component {
         console.log('Algo de errado não está certo');
         break;
     }
-    if (this.state.answer === result) {
+    if (answer === result) {
       this.props.onCorrentAnswer();
     } else {
       this.props.onIncorrectAnswer();
+    }    
+  }
+  getOperatorTag(opsig) {    
+    switch (opsig) {
+      case '-':
+        return <minus/>;
+      case '+':
+        return <plus/>;
+      case 'x':
+        return <times/>;
+      default:
+        return <plus/>;
     }
+  }
+  renderMath() {
+    const { n1, n2, opsig } = this.props.question;
+    console.log('renderMath')
+    return (
+      <span role="presentation">
+        <span>{n1}</span>
+        <span className="absolute left">{opsig}</span>
+        <span>{n2}</span>          
+      </span>
+    );
+  }
+  render() {
+    const { n1, n2, op } = this.props.question;
+    return (
+      <div>
+        <div id="conta" className="big text-center">
+          <div id="conta-valores">
+            <div tabIndex="3" aria-live="polite" aria-atomic="true" aria-label={`${n1} ${op} ${n2}`}></div>
+            {this.renderMath()}
+          </div>
+          <AnswerInput onAnswer={this.onAnswer}/>
+        </div>
+      </div>
+    )
+  }
+}
+
+class AnswerInput extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      answer: ''
+    }
+    this.onInputChange = this.onInputChange.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
+  }
+  onSubmit(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    this.props.onAnswer(this.state.answer);
     this.setState({
       answer: ''
-    });
+    })
   }
   onInputChange(e) {
     e.preventDefault();
     e.stopPropagation();
-    console.log('mudou')
     const answer = parseInt(e.target.value, 10);
     if (isNaN(answer)) {
       this.setState({
@@ -52,42 +102,19 @@ export default class GameQuestion extends React.Component {
       })
     }
   }
-  componentDidMount () {
-    this.nameInput.focus(); 
-  }
-  renderMath() {
-    const { n1, n2, opsig } = this.props.question;
-    return (
-      <math xmlns="http://www.w3.org/1998/Math/MathML">
-        <mrow>
-          <mn>{n1}</mn>
-          <mo>{opsig}</mo>
-          <mn>{n2}</mn>
-        </mrow>
-      </math>
-    );
-  }
   render() {
-    const { n1, n2, op } = this.props.question;
     return (
-      <div id="conta" className="big text-center">      
-        <div tabIndex="3" id="conta-valores" role="math" aria-live="assertive" aria-label={`${n1} ${op} ${n2}`}>
-          {this.renderMath()}
-        </div>
-        <form action="#" id="answer-form" onSubmit={this.onAnswer}>
-          <input
-            role="status"
-            tabIndex="4"
-            className="small"
-            placeholder="digite a resposta"
-            type="number"
-            value={this.state.answer && parseInt(this.state.answer, 10)}
-            onChange={this.onInputChange}
-            ref={(input) => { this.nameInput = input; }} 
-            disabled={this.props.gameOver || this.props.isPaused}
-          />
-        </form>
-      </div>
-    )
+      <form action="#" id="answer-form" onSubmit={this.onSubmit}>
+        <input
+          tabIndex="4"          
+          className="small"          
+          placeholder="Digite o resultado da conta"
+          type="number"
+          value={this.state.answer}
+          onChange={this.onInputChange}          
+          disabled={this.props.gameOver || this.props.isPaused}
+        />
+      </form>
+    );
   }
 }
