@@ -42,6 +42,12 @@ export default class StartScreen extends React.Component {
             >
               TUTORIAL
             </button>
+            <button
+              className="button"
+              onClick={this.props.onDisplayRanking}
+            >
+              PONTUAÇÕES
+            </button>
           </div>
         </nav>
       </div>

@@ -133,6 +133,7 @@ export default class GameBoard extends React.Component {
           <StartScreen
             onStartGame={this.onStartGame}
             onDisplayTutorial={this.onDisplayTutorial}
+            onDisplayRanking={this.onDisplayRanking}
           />
         );
       case this.gameStates.PLAYING:
@@ -169,7 +170,10 @@ export default class GameBoard extends React.Component {
         );
       case this.gameStates.RANKING:
         return (
-          <Ranking/>
+          <Ranking
+            onStartGame={this.onStartGame}
+            onExitGame={this.onExitGame}
+          />
         );
       case this.gameStates.TUTORIAL:
         return (
