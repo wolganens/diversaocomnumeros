@@ -28,7 +28,7 @@ export default class Ranking extends React.Component {
     if (this.state.scores.length === 0) {
       return (
         <div>
-          <p className="big">Não há pontuações salvas.</p>
+          <p className="text-center grand">Não há pontuações salvas.</p>
           <GameNav>
             <button onClick={this.props.onStartGame} className="button"> Jogar </button>
             <button onClick={this.props.onExitGame} className="button"> Voltar </button>
