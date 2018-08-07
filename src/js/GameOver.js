@@ -43,6 +43,8 @@ export default class GameOver extends React.Component {
       method: 'share',
       display: 'popup',
       href: 'https://diversao-com-numeros.herokuapp.com/',
+      hashtag: 'diversãocomnumeros',
+      quote: 'Minha pontuação no Diversão com Números!'
     }, function(response){});
   }
   render() {
