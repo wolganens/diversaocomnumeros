@@ -7,6 +7,7 @@ import GameNav from './GameNav';
 import Tutorial from './Tutorial';
 import Menu from './Menu';
 import Level from './Level'
+import Ranking from './Ranking';
 
 export default class GameBoard extends React.Component {
   constructor(props) {
@@ -47,6 +48,7 @@ export default class GameBoard extends React.Component {
     this.saveOldTime = this.saveOldTime.bind(this);
     this.onChangeLevel = this.onChangeLevel.bind(this);
     this.onDisplayLevel = this.onDisplayLevel.bind(this);
+    this.onDisplayRanking = this.onDisplayRanking.bind(this);
     this.onExitLevel = this.onExitLevel.bind(this);
     this.componentDidMount = this.componentDidMount.bind(this);
   }
@@ -84,6 +86,11 @@ export default class GameBoard extends React.Component {
   onDisplayTutorial() {
     this.setState({
       gameState: this.gameStates.TUTORIAL
+    });
+  }
+  onDisplayRanking() {
+    this.setState({
+      gameState: this.gameStates.RANKING
     });
   }
   onPauseGame() {
@@ -159,6 +166,10 @@ export default class GameBoard extends React.Component {
             onStartGame={this.onStartGame}
             onExitGame={this.onExitGame}
           />
+        );
+      case this.gameStates.RANKING:
+        return (
+          <Ranking/>
         );
       case this.gameStates.TUTORIAL:
         return (
