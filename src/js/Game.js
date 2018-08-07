@@ -25,6 +25,8 @@ export default class GameBoard extends React.Component {
       PAUSED: 4,
       /*Seleção de Dificuldade*/
       LEVEL: 5,
+      /*Ranking de pontuações*/
+      RANKING: 6,
     };
     this.state = {
       level: 4,
