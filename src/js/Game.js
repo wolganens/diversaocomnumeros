@@ -124,6 +124,10 @@ export default class GameBoard extends React.Component {
   }
   saveOldTime(time) {
     this.oldTime = time
+    if (this.moreTime) {
+      this.moreTime = false;
+      return true;
+    }
   }
   renderMainSection() {
     /*Renderiza a janela principal do jogo de acordo com o estado atual*/
@@ -146,7 +150,7 @@ export default class GameBoard extends React.Component {
               onIncorrectAnswer={this.onIncorrectAnswer}
               isPaused={this.state.gameState === this.gameStates.PAUSED}
               saveOldTime={this.saveOldTime}
-              oldTime={this.oldTime}
+              oldTime={this.oldTime}              
               level={this.state.level}
             />
             <GameNav>
@@ -156,6 +160,13 @@ export default class GameBoard extends React.Component {
                 onClick={this.onPauseGame}
               >
                 Pausar
+              </button>
+              <button
+                tabIndex="6"
+                className="button"
+                onClick={(e)=>{this.moreTime = true}}
+              >
+                Mais tempo
               </button>
             </GameNav>
           </div>

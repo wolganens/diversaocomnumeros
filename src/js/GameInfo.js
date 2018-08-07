@@ -22,12 +22,18 @@ export default class GameInfo extends React.Component {
     /*
       Este método é responsável por descontar 1 unidade do campo time no estado
       do componenente
-    */
-
+    */    
     this.setState(prevState => ({
       time: prevState.time - 1
     }));
-    this.props.saveOldTime(this.state.time)
+    /*A função que mantem o tempo de jogo salvo retorna um booleano indicando
+    se deve ser acrescentado 15 segundos ao tempo (GAMB ATÉ UMA SOLUÇÃO MELHOR)*/
+    const moreTime = this.props.saveOldTime(this.state.time);
+    if (moreTime) {
+      this.setState(prevState => ({
+        time: prevState.time + 15
+      }));
+    }
     /*
       A partir dos 10 segundos restantes, liga o estado de "apuro",
       fazendo mudar a imagem do relógio
