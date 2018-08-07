@@ -6,8 +6,9 @@ export default class GameOver extends React.Component {
     this.onSaveClick = this.onSaveClick.bind(this);
   }
   onSaveClick(e) {
-    const name = prompt('Insira o seu nome:');
+    const name = prompt('Salvar pontuação: \nPor favor, insira o seu nome:');
     localStorage.setItem(name, this.props.score);
+    alert('Pontuação salva com sucesso!');
   }
   render() {
     return (

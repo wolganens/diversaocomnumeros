@@ -45,8 +45,7 @@ export default class GameQuestion extends React.Component {
     }
   }
   renderMath() {
-    const { n1, n2, opsig } = this.props.question;
-    console.log('renderMath')
+    const { n1, n2, opsig } = this.props.question;    
     return (
       <span role="presentation">
         <span>{n1}</span>
