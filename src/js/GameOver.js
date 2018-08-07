@@ -3,6 +3,11 @@ import React from 'react';
 export default class GameOver extends React.Component {
   constructor(props) {
     super(props);
+    this.onSaveClick = this.onSaveClick.bind(this);
+  }
+  onSaveClick(e) {
+    const name = prompt('Insira o seu nome:');
+    localStorage.setItem(name, this.props.score);
   }
   render() {
     return (
@@ -20,7 +25,7 @@ export default class GameOver extends React.Component {
         </button>
         <div className="text-center">
           <button
-            onClick={this.props.onExitGame}
+            onClick={this.onSaveClick}
             className="button">Salvar pontuação
           </button>
         </div>
