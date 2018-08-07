@@ -42,7 +42,7 @@ export default class GameOver extends React.Component {
     FB.ui({
       method: 'share',
       display: 'popup',
-      href: 'http://localhost:3000/',
+      href: 'https://diversao-com-numeros.herokuapp.com/',
     }, function(response){});
   }
   render() {
