@@ -1,6 +1,9 @@
 import React from 'react';
 
 export default class GameOver extends React.Component {
+  constructor(props) {
+    super(props);
+  }
   render() {
     return (
       <section className="quadroJogo text-center text-board">
@@ -15,6 +18,12 @@ export default class GameOver extends React.Component {
           onClick={this.props.onExitGame}
           className="button">Fechar jogo
         </button>
+        <div className="text-center">
+          <button
+            onClick={this.props.onExitGame}
+            className="button">Salvar pontuação
+          </button>
+        </div>
       </section>
     );
   }
