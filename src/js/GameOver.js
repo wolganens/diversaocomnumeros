@@ -4,6 +4,7 @@ export default class GameOver extends React.Component {
   constructor(props) {
     super(props);
     this.onSaveClick = this.onSaveClick.bind(this);
+    this.onFbShareClick = this.onFbShareClick.bind(this);
   }
   onSaveClick(e) {
     /*Nome do jogador*/
@@ -36,6 +37,14 @@ export default class GameOver extends React.Component {
     alert('Pontuação salva com sucesso!');
     this.props.onExitGame()
   }
+  onFbShareClick(e) {
+    let FB = window.FB;
+    FB.ui({
+      method: 'share',
+      display: 'popup',
+      href: 'http://localhost:3000/',
+    }, function(response){});
+  }
   render() {
     return (
       <section className="quadroJogo text-center text-board">
@@ -54,6 +63,10 @@ export default class GameOver extends React.Component {
           <button
             onClick={this.onSaveClick}
             className="button">Salvar pontuação
+          </button>
+          <button
+            onClick={this.onFbShareClick}
+            className="button">Compartilhar
           </button>
         </div>
       </section>
