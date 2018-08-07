@@ -76,7 +76,10 @@ class FbShareButton extends React.Component {
   render() {
     return (
       <FacebookProvider appId="659920747712204">
-        <Share href="https://diversao-com-numeros.herokuapp.com">
+        <Share 
+          href="https://diversao-com-numeros.herokuapp.com"
+          quote={`Acabo de marcar ${this.props.score} no Diversão com Números!`}
+        >
           <button className="button" type="button">Compartilhar pontuação</button>
         </Share>
       </FacebookProvider>
