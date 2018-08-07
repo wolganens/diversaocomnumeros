@@ -1,4 +1,5 @@
 import React from 'react';
+import FacebookProvider, { Share } from 'react-facebook';
 
 export default class GameOver extends React.Component {
   constructor(props) {
@@ -64,12 +65,21 @@ export default class GameOver extends React.Component {
             onClick={this.onSaveClick}
             className="button">Salvar pontuação
           </button>
-          <button
-            onClick={this.onFbShareClick}
-            className="button">Compartilhar
-          </button>
+          <FbShareButton/>
         </div>
       </section>
+    );
+  }
+}
+
+class FbShareButton extends React.Component {
+  render() {
+    return (
+      <FacebookProvider appId="659920747712204">
+        <Share href="https://diversao-com-numeros.herokuapp.com">
+          <button className="button" type="button">Compartilhar pontuação</button>
+        </Share>
+      </FacebookProvider>
     );
   }
 }
