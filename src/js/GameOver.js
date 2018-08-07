@@ -11,7 +11,7 @@ export default class GameOver extends React.Component {
     /*Objeto com o score do jogador atual*/
     const playerScore = {name, score : this.props.score};
     /*Recupera a string com as pontuações salvas no localStorage*/
-    const localScores = localStorage.getItem('score');
+    const localScores = localStorage.getItem('scores');
     /*Se não há nenhuma pontuação anterior, cria um vetor de pontuações, apenas
     com a pontuação do jogador atual, converte para string e armazena*/
     let scores;
@@ -32,7 +32,7 @@ export default class GameOver extends React.Component {
       }
     }
     /*Atualiza as pontuações no localStorage do usuário*/
-    localStorage.setItem('score', JSON.stringify(scores));
+    localStorage.setItem('scores', JSON.stringify(scores));
     alert('Pontuação salva com sucesso!');
     this.props.onExitGame()
   }
