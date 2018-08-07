@@ -14,7 +14,7 @@ export default class GameInfo extends React.Component {
       opacity: 0
     }
     this.state = {
-      time: props.time || 60,
+      time: props.time || 1,
       hurryUp: false
     }
   }

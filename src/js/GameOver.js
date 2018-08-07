@@ -52,21 +52,21 @@ export default class GameOver extends React.Component {
         <div tabIndex="1" className="grand">Fim do Jogo!</div>
         <div tabIndex="2" className="medium">Sua pontuação foi:</div>
         <div tabIndex="3" className="grand text-center">{this.props.score}</div>
-        <button
-          onClick={this.props.onStartGame}
-          className="button">Jogar novamente
-        </button>
-        <button
-          onClick={this.props.onExitGame}
-          className="button">Fechar jogo
-        </button>
-        <div className="text-center">
+        <div className="btn-group">
+          <button
+            onClick={this.props.onStartGame}
+            className="button">Jogar novamente
+          </button>
+          <button
+            onClick={this.props.onExitGame}
+            className="button">Fechar jogo
+          </button>        
           <button
             onClick={this.onSaveClick}
             className="button">Salvar pontuação
           </button>
-          <FbShareButton/>
         </div>
+        <FbShareButton score={this.props.score}/>        
       </section>
     );
   }
@@ -80,7 +80,7 @@ class FbShareButton extends React.Component {
           href="https://diversao-com-numeros.herokuapp.com"
           quote={`Acabo de marcar ${this.props.score} no Diversão com Números!`}
         >
-          <button className="button" type="button">Compartilhar pontuação</button>
+          <button className="medium fb" type="button">Compartilhar pontuação</button>
         </Share>
       </FacebookProvider>
     );
