@@ -5,7 +5,8 @@ export default class StartScreen extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      loading: true
+      loading: true,
+      exit: false
     }
     this.componentDidMount = this.componentDidMount.bind(this);
   }
@@ -19,7 +20,7 @@ export default class StartScreen extends React.Component {
       return <p className="text-center big">Carregando...</p>
     }
     return (
-      <div>
+      <div className={this.state.exit ? 'zoomOutDown animated faster' : ''}>
         <header>
           <h1 tabIndex="1" className="start-title text-center big">
             <span className="bounceInDown animated text-primary block">
@@ -35,7 +36,7 @@ export default class StartScreen extends React.Component {
           <div className="btn-group">
             <button
               className="button"
-              onClick={this.props.onStartGame}
+              onClick={() => {this.setState({exit: true}); setTimeout(this.props.onStartGame, 400) }}
             >
               <span aria-hidden="true">▶</span> JOGAR
             </button>

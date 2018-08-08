@@ -116,6 +116,7 @@ class AnswerInput extends React.Component {
           onChange={this.onInputChange}          
           disabled={this.props.gameOver || this.props.isPaused}
         />
+        {this.correct = true}
       </form>
     );
   }

@@ -24,7 +24,9 @@ export default class Ranking extends React.Component {
       });
     }
   }
-  render() {    
+  render() { 
+    const {scores} = this.state;
+    console.log(scores)
     if (this.state.scores.length === 0) {
       return (
         <div>
@@ -39,10 +41,12 @@ export default class Ranking extends React.Component {
       return (
         <div>
           <h1>Pontuações:</h1>
-          <ul>
-            {this.state.scores.map( (score, index) => (
-              <li key={index} className="medium">{`${score.name}: ${score.score}`}</li>
-            ))}
+          <ul>          
+          {
+            scores.map( (score, index) => (
+              <li key={index} className="bounceInRight animated medium">{`${score.name}: ${score.score}`}</li>
+            ))
+          }
           </ul>
           <GameNav>
             <button onClick={this.props.onStartGame} className="button"> Jogar </button>

@@ -22,7 +22,7 @@ export default class GamePlay extends React.Component {
   }
   render() {
     return (
-      <section className="quadroJogo">
+      <section className="zoomIn animated faster quadroJogo">
         <div id="game-wrapper">
           <GameInfo
             onGameOver={this.props.onGameOver}
