@@ -1,5 +1,5 @@
 import React from 'react';
-
+import '../css/animate.css'
 export default class StartScreen extends React.Component {
 
   constructor(props) {
@@ -22,13 +22,16 @@ export default class StartScreen extends React.Component {
       <div>
         <header>
           <h1 tabIndex="1" className="start-title text-center big">
-            <span className="text-primary block">
-            <span aria-hidden="true">+</span> DIVERSÃO</span>
-            <span className="text-secondary block">COM</span>
-            <span className="text-tertiary block">NÚMEROS <span aria-hidden="true">-</span></span>
+            <span className="bounceInDown animated text-primary block">
+              <span aria-hidden="true">+</span> DIVERSÃO
+            </span>
+            <span className="bounceInLeft animated text-secondary block">COM</span>
+            <span className="bounceInRight animated text-tertiary block">NÚMEROS
+              <span aria-hidden="true">-</span>
+            </span>
           </h1>
         </header>
-        <nav className="game-nav text-center">
+        <nav className="bounceInUp animated game-nav text-center">
           <div className="btn-group">
             <button
               className="button"
