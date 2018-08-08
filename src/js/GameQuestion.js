@@ -25,14 +25,16 @@ export default class GameQuestion extends React.Component {
       default:
         console.log('Algo de errado não está certo');
         break;
-    }
-    if (answer === result) {
-      this.props.onCorrentAnswer();
-      return true;
-    } else {
-      this.props.onIncorrectAnswer();
-      return false;
     }    
+    if (answer !== '') {
+      if (answer === result) {
+        this.props.onCorrentAnswer();
+        return true;
+      } else {
+        this.props.onIncorrectAnswer();
+        return false;
+      }
+    }
   }
   getOperatorTag(opsig) {    
     switch (opsig) {
