@@ -94,7 +94,7 @@ export default class Tutorial extends React.Component {
   }
   render() {
     return (
-      <div>
+      <div className="fadeIn animated faster">
         <header>
           <h1 tabIndex="1" aria-live="assertive" >{this.state.selected == null ? 'Tutorial' : this.tutorials[this.state.selected].title}</h1>
         </header>

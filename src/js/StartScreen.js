@@ -20,7 +20,7 @@ export default class StartScreen extends React.Component {
       return <p className="text-center big">Carregando...</p>
     }
     return (
-      <div className={this.state.exit ? 'zoomOutDown animated faster' : ''}>
+      <div>
         <header>
           <h1 tabIndex="1" className="start-title text-center big">
             <span className="bounceInDown animated text-primary block">

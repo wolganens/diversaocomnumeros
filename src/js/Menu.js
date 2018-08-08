@@ -3,7 +3,7 @@ import React from 'react';
 export default class Menu extends React.Component {
   render() {
     return (
-      <section className="quadroJogo text-center text-board">
+      <section className="fadeIn animated faster quadroJogo text-center text-board">
         <div className="grand">Menu</div>
         <div className="btn-group">
           <button
