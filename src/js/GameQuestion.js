@@ -111,7 +111,7 @@ class AnswerInput extends React.Component {
           tabIndex="4"          
           className={`${!this.correct ? 'shake animated ' : ''} small`}
           placeholder="Digite o resultado da conta"
-          type="number"
+          type="text"
           value={this.state.answer}
           onChange={this.onInputChange}          
           disabled={this.props.gameOver || this.props.isPaused}
