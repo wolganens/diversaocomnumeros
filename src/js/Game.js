@@ -64,7 +64,7 @@ export default class GameBoard extends React.Component {
     */
     this.setState(prevState => ({
       score: prevState.score + 10
-    }));
+    }));    
   }
   onGameOver() {
     this.setState({
@@ -151,7 +151,7 @@ export default class GameBoard extends React.Component {
               isPaused={this.state.gameState === this.gameStates.PAUSED}
               saveOldTime={this.saveOldTime}
               oldTime={this.oldTime}              
-              level={this.state.level}
+              level={this.state.level}              
             />
             <GameNav>
               <button
@@ -177,6 +177,7 @@ export default class GameBoard extends React.Component {
             score={this.state.score}
             onStartGame={this.onStartGame}
             onExitGame={this.onExitGame}
+            onDisplayRanking={this.onDisplayRanking}
           />
         );
       case this.gameStates.RANKING:

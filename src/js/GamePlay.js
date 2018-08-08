@@ -29,7 +29,7 @@ export default class GamePlay extends React.Component {
             score={this.props.score}
             isPaused={this.props.isPaused}
             saveOldTime={this.props.saveOldTime}
-            time={this.props.oldTime}
+            time={this.props.oldTime}            
           />
           <GameQuestion
             onCorrentAnswer={this.correctHandler}

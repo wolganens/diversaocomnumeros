@@ -73,7 +73,7 @@ export default class GameInfo extends React.Component {
     */
     clearInterval(this.interval);
   }
-  render() {
+  render() {    
     return (
       <div id="top-info">
         <div tabIndex="1" className="pull-left">Pontos: {this.props.score}</div>

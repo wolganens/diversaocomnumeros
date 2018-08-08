@@ -10,33 +10,35 @@ export default class GameOver extends React.Component {
   onSaveClick(e) {
     /*Nome do jogador*/
     const name = prompt('Salvar pontuação: \nPor favor, insira o seu nome:');
-    /*Objeto com o score do jogador atual*/
-    const playerScore = {name, score : this.props.score};
-    /*Recupera a string com as pontuações salvas no localStorage*/
-    const localScores = localStorage.getItem('scores');
-    /*Se não há nenhuma pontuação anterior, cria um vetor de pontuações, apenas
-    com a pontuação do jogador atual, converte para string e armazena*/
-    let scores;
-    if (!localScores) {
-      scores = [playerScore];
-    } else {
-      /*Caso já hajam pontuações salvas, recupera elas e adiciona a pontuação do jogador*/
-      scores = JSON.parse(localScores);
-      /*Tenta encontrar o jogador nas pontuações já existentes*/  
-      const playerScoreIndex = scores.findIndex(score => score.name === playerScore.name);
-      if (playerScoreIndex === -1) {
-        /*Não encontrou o usuário*/
-        /*Adiciona a pontuação do usuário no vetor de pontuações*/
-        scores.push(playerScore);
+    if (name) {
+      /*Objeto com o score do jogador atual*/
+      const playerScore = {name, score : this.props.score};
+      /*Recupera a string com as pontuações salvas no localStorage*/
+      const localScores = localStorage.getItem('scores');
+      /*Se não há nenhuma pontuação anterior, cria um vetor de pontuações, apenas
+      com a pontuação do jogador atual, converte para string e armazena*/
+      let scores;
+      if (!localScores) {
+        scores = [playerScore];
       } else {
-        /*Atualiza pontuação do jogador*/
-        scores[playerScoreIndex] = playerScore;
+        /*Caso já hajam pontuações salvas, recupera elas e adiciona a pontuação do jogador*/
+        scores = JSON.parse(localScores);
+        /*Tenta encontrar o jogador nas pontuações já existentes*/  
+        const playerScoreIndex = scores.findIndex(score => score.name === playerScore.name);
+        if (playerScoreIndex === -1) {
+          /*Não encontrou o usuário*/
+          /*Adiciona a pontuação do usuário no vetor de pontuações*/
+          scores.push(playerScore);
+        } else {
+          /*Atualiza pontuação do jogador*/
+          scores[playerScoreIndex] = playerScore;
+        }
       }
+      /*Atualiza as pontuações no localStorage do usuário*/
+      localStorage.setItem('scores', JSON.stringify(scores));
+      alert('Pontuação salva com sucesso!');
+      this.props.onDisplayRanking();
     }
-    /*Atualiza as pontuações no localStorage do usuário*/
-    localStorage.setItem('scores', JSON.stringify(scores));
-    alert('Pontuação salva com sucesso!');
-    this.props.onExitGame()
   }
   onFbShareClick(e) {
     let FB = window.FB;
