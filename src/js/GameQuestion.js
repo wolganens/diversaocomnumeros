@@ -28,8 +28,10 @@ export default class GameQuestion extends React.Component {
     }
     if (answer === result) {
       this.props.onCorrentAnswer();
+      return true;
     } else {
       this.props.onIncorrectAnswer();
+      return false;
     }    
   }
   getOperatorTag(opsig) {    
@@ -76,13 +78,14 @@ class AnswerInput extends React.Component {
     this.state = {
       answer: ''
     }
+    this.correct = true;
     this.onInputChange = this.onInputChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
   onSubmit(e) {
     e.preventDefault();
     e.stopPropagation();
-    this.props.onAnswer(this.state.answer);
+    this.correct = this.props.onAnswer(this.state.answer);    
     this.setState({
       answer: ''
     })
@@ -106,7 +109,7 @@ class AnswerInput extends React.Component {
       <form action="#" id="answer-form" onSubmit={this.onSubmit}>
         <input
           tabIndex="4"          
-          className="small"          
+          className={`${!this.correct ? 'shake animated ' : ''} small`}
           placeholder="Digite o resultado da conta"
           type="number"
           value={this.state.answer}
