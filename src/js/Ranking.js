@@ -29,7 +29,7 @@ export default class Ranking extends React.Component {
     console.log(scores)
     if (this.state.scores.length === 0) {
       return (
-        <div className="fadeIn animated faster">
+        <div className="fadeIn animated faster borda">
           <p className="text-center grand">Não há pontuações salvas.</p>
           <GameNav>
             <button onClick={this.props.onStartGame} className="button"> Jogar </button>
@@ -39,7 +39,7 @@ export default class Ranking extends React.Component {
       );
     } else {
       return (
-        <div className="fadeIn animated faster">
+        <div className="fadeIn animated faster borda">
           <h1>Pontuações:</h1>
           <ul>          
           {

@@ -1,7 +1,6 @@
 import React from 'react';
 import clockImage from '../imgs/relogio.png';
 import hurryClockImage from '../imgs/relogiotempo.png';
-import '../css/animate.css'
 
 export default class GameInfo extends React.Component {
   /*
@@ -81,9 +80,9 @@ export default class GameInfo extends React.Component {
         <div aria-live="assertive" aria-atomic="false" aria-label={parseInt(((this.state.time)/10)+1, 10) + "0 segundos restantes"} style={this.escondido}></div>
         <div className="clearfix"></div>
         {this.state.hurryUp ? (
-          <img id="clock-img" className="shake animated absolute right bottom" src={hurryClockImage} alt="relogio do tempo"/>
+          <img id="clock-img" className="shake animated absolute" src={hurryClockImage} alt="relogio do tempo"/>
         ) : (
-          <img id="clock-img" className="absolute right bottom" src={clockImage} alt="relogio do tempo"/>
+          <img id="clock-img" className="absolute" src={clockImage} alt="relogio do tempo"/>
         )}
       </div>
     )

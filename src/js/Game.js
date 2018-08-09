@@ -1,13 +1,13 @@
 import React from 'react';
-import '../css/game.css'
 import GameOver from './GameOver';
 import StartScreen from './StartScreen';
 import GamePlay from './GamePlay';
-import GameNav from './GameNav';
 import Tutorial from './Tutorial';
 import Menu from './Menu';
 import Level from './Level'
 import Ranking from './Ranking';
+import '../css/game.css';
+import '../css/animate.css';
 
 export default class GameBoard extends React.Component {
   constructor(props) {
@@ -141,35 +141,19 @@ export default class GameBoard extends React.Component {
           />
         );
       case this.gameStates.PLAYING:
-        return (
-          <div>
-            <GamePlay
-              onGameOver={this.onGameOver}
-              score={this.state.score}
-              onCorrentAnswer={this.onCorrentAnswer}
-              onIncorrectAnswer={this.onIncorrectAnswer}
-              isPaused={this.state.gameState === this.gameStates.PAUSED}
-              saveOldTime={this.saveOldTime}
-              oldTime={this.oldTime}              
-              level={this.state.level}              
-            />
-            <GameNav>
-              <button
-                tabIndex="6"
-                className="button"
-                onClick={this.onPauseGame}
-              >
-                Pausar
-              </button>
-              <button
-                tabIndex="6"
-                className="button"
-                onClick={(e)=>{this.moreTime = true}}
-              >
-                Mais tempo
-              </button>
-            </GameNav>
-          </div>
+        return (          
+          <GamePlay
+            onGameOver={this.onGameOver}
+            score={this.state.score}
+            onCorrentAnswer={this.onCorrentAnswer}
+            onIncorrectAnswer={this.onIncorrectAnswer}
+            isPaused={this.state.gameState === this.gameStates.PAUSED}
+            saveOldTime={this.saveOldTime}
+            oldTime={this.oldTime}              
+            level={this.state.level}
+            onPauseGame={this.onPauseGame}
+            onMoreTime={(e)=>{this.moreTime = true}}
+          />
         );
       case this.gameStates.GAMEOVER:
         return (
@@ -215,7 +199,7 @@ export default class GameBoard extends React.Component {
   }
   render() {
     return (
-      <main className="borda">
+      <main>
         {this.renderMainSection()}
       </main>
     );

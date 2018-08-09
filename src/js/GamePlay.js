@@ -22,8 +22,8 @@ export default class GamePlay extends React.Component {
   }
   render() {
     return (
-      <section className="fadeIn animated faster quadroJogo">
-        <div id="game-wrapper">
+      <div className="classroom">
+        <section className="fadeIn animated quadroJogo">        
           <GameInfo
             onGameOver={this.props.onGameOver}
             score={this.props.score}
@@ -53,8 +53,24 @@ export default class GamePlay extends React.Component {
             className="hidden"
             controls
           />
-        </div>
-      </section>
+        </section>
+        <GameNav>
+          <button
+            tabIndex="6"
+            className="button"
+            onClick={this.props.onPauseGame}
+          >
+            Pausar
+          </button>
+          <button
+            tabIndex="6"
+            className="button"
+            onClick={this.props.onMoreTime}
+          >
+            Mais tempo
+          </button>
+        </GameNav>
+      </div>
     );
   }
 }

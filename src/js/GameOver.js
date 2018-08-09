@@ -50,26 +50,28 @@ export default class GameOver extends React.Component {
   }
   render() {
     return (
-      <section className="fadeIn animated quadroJogo text-center text-board">
-        <div tabIndex="1" className="grand">Fim do Jogo!</div>
-        <div tabIndex="2" className="medium">Sua pontuação foi:</div>
-        <div tabIndex="3" className="grand text-center">{this.props.score}</div>
-        <div className="btn-group">
-          <button
-            onClick={this.props.onStartGame}
-            className="button">Jogar novamente
-          </button>
-          <button
-            onClick={this.props.onExitGame}
-            className="button">Fechar jogo
-          </button>        
-          <button
-            onClick={this.onSaveClick}
-            className="button">Salvar pontuação
-          </button>
-        </div>
-        <FbShareButton score={this.props.score}/>        
-      </section>
+      <div className="classroom">
+        <section className="fadeIn animated quadroJogo text-center text-board">
+          <div tabIndex="1" className="grand">Fim do Jogo!</div>
+          <div tabIndex="2" className="medium">Sua pontuação foi:</div>
+          <div tabIndex="3" className="grand text-center">{this.props.score}</div>
+          <div className="btn-group">
+            <button
+              onClick={this.props.onStartGame}
+              className="button">Jogar novamente
+            </button>
+            <button
+              onClick={this.props.onExitGame}
+              className="button">Fechar jogo
+            </button>        
+            <button
+              onClick={this.onSaveClick}
+              className="button">Salvar pontuação
+            </button>
+          </div>
+          <FbShareButton score={this.props.score}/>        
+        </section>
+      </div>
     );
   }
 }

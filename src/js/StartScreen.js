@@ -1,5 +1,4 @@
 import React from 'react';
-import '../css/animate.css'
 export default class StartScreen extends React.Component {
 
   constructor(props) {
@@ -20,7 +19,7 @@ export default class StartScreen extends React.Component {
       return <p className="text-center big">Carregando...</p>
     }
     return (
-      <div>
+      <div className="borda">
         <header>
           <h1 tabIndex="1" className="start-title text-center big">
             <span className="bounceInDown animated text-primary block">

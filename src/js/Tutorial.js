@@ -8,9 +8,7 @@ import ReactAudioPlayer from 'react-audio-player';
 import imgTelaJogoPausado from '../imgs/telaJogoPausado.png';
 import imgTelaFimJogo from '../imgs/telaFimJogo.png';
 import GameNav from './GameNav';
-
 import '../css/tutorial.css';
-
 
 export default class Tutorial extends React.Component {
   constructor(props) {
@@ -94,7 +92,7 @@ export default class Tutorial extends React.Component {
   }
   render() {
     return (
-      <div className="fadeIn animated faster">
+      <div className="fadeIn animated faster borda">
         <header>
           <h1 tabIndex="1" aria-live="assertive" >{this.state.selected == null ? 'Tutorial' : this.tutorials[this.state.selected].title}</h1>
         </header>
