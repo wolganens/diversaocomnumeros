@@ -13,6 +13,7 @@ export default class GameInfo extends React.Component {
       position: 'absolute',
       opacity: 0
     }
+    this.moreTimeCount = 0;
     this.state = {
       time: props.time || 60,
       hurryUp: false
@@ -30,9 +31,15 @@ export default class GameInfo extends React.Component {
     se deve ser acrescentado 15 segundos ao tempo (GAMB ATÉ UMA SOLUÇÃO MELHOR)*/
     const moreTime = this.props.saveOldTime(this.state.time);
     if (moreTime) {
-      this.setState(prevState => ({
-        time: prevState.time + 15
-      }));
+      if (this.props.score > 0) {
+        this.setState(prevState => ({
+          time: prevState.time + ((15 - this.moreTimeCount) < 5 ? 5 : (15 - this.moreTimeCount))
+        }));
+        this.moreTimeCount++;
+        this.props.buyTime();
+      } else {
+        alert('Você não tem pontos suficientes!');
+      }
     }
     /*
       A partir dos 10 segundos restantes, liga o estado de "apuro",

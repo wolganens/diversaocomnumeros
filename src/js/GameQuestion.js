@@ -8,6 +8,10 @@ export default class GameQuestion extends React.Component {
     }
     this.onAnswer = this.onAnswer.bind(this);    
     this.getOperatorTag = this.getOperatorTag.bind(this);
+    this.shouldComponentUpdate = this.shouldComponentUpdate.bind(this);
+  }
+  shouldComponentUpdate(nextProps, nextState) {
+    return nextProps.score >= this.props.score;
   }
   onAnswer(answer) {    
     const { n1, n2, opsig} = this.props.question;

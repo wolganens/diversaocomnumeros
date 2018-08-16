@@ -51,11 +51,19 @@ export default class GameBoard extends React.Component {
     this.onDisplayRanking = this.onDisplayRanking.bind(this);
     this.onExitLevel = this.onExitLevel.bind(this);
     this.componentDidMount = this.componentDidMount.bind(this);
+    this.buyTime = this.buyTime.bind(this);
   }
   componentDidMount () {
     this.setState({
       loading: false
     });
+  }
+  buyTime() {
+    if (this.state.score > 0) {
+      this.setState(prevState => ({
+        score: prevState.score - 10
+      }));
+    }
   }
   onCorrentAnswer() {
     /*
@@ -153,6 +161,7 @@ export default class GameBoard extends React.Component {
             level={this.state.level}
             onPauseGame={this.onPauseGame}
             onMoreTime={(e)=>{this.moreTime = true}}
+            buyTime={this.buyTime}
           />
         );
       case this.gameStates.GAMEOVER:

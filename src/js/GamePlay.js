@@ -10,7 +10,7 @@ export default class GamePlay extends React.Component {
   constructor(props) {
     super(props)
     this.incorrectHandler = this.incorrectHandler.bind(this);
-    this.correctHandler = this.correctHandler.bind(this);
+    this.correctHandler = this.correctHandler.bind(this);  
     this.factory = new CalcFactory();
   }
   incorrectHandler() {
@@ -19,7 +19,7 @@ export default class GamePlay extends React.Component {
   correctHandler() {
     this.props.onCorrentAnswer();
     this.correct.audioEl.play();
-  }
+  }  
   render() {
     return (
       <div className="classroom">
@@ -29,13 +29,15 @@ export default class GamePlay extends React.Component {
             score={this.props.score}
             isPaused={this.props.isPaused}
             saveOldTime={this.props.saveOldTime}
-            time={this.props.oldTime}            
+            time={this.props.oldTime}
+            buyTime={this.props.buyTime}
           />
           <GameQuestion
             onCorrentAnswer={this.correctHandler}
             onIncorrectAnswer={this.incorrectHandler}
             question={this.factory.make(this.props.score, this.props.level)}
             isPaused={this.props.isPaused}
+            score={this.props.score}
           />
           <GameActions/>
           <GameNav/>
