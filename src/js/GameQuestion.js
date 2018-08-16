@@ -1,4 +1,5 @@
 import React from 'react';
+import { CalcFactory } from './Utils';
 
 export default class GameQuestion extends React.Component {
   constructor(props) {
@@ -9,12 +10,14 @@ export default class GameQuestion extends React.Component {
     this.onAnswer = this.onAnswer.bind(this);    
     this.getOperatorTag = this.getOperatorTag.bind(this);
     this.shouldComponentUpdate = this.shouldComponentUpdate.bind(this);
+    this.factory = new CalcFactory();
+    this.correctCounter = 0;
   }
   shouldComponentUpdate(nextProps, nextState) {
     return nextProps.score >= this.props.score;
   }
-  onAnswer(answer) {    
-    const { n1, n2, opsig} = this.props.question;
+  onAnswer(answer, question) {
+    const { n1, n2, opsig} = question;
     let result = null;
     switch (opsig) {
       case '+':
@@ -33,6 +36,7 @@ export default class GameQuestion extends React.Component {
     if (answer !== '') {
       if (answer === result) {
         this.props.onCorrentAnswer();
+        this.correctCounter++;
         return true;
       } else {
         this.props.onIncorrectAnswer();
@@ -52,8 +56,7 @@ export default class GameQuestion extends React.Component {
         return <plus/>;
     }
   }
-  renderMath() {
-    const { n1, n2, opsig } = this.props.question;    
+  renderMath(n1, n2, opsig) {    
     return (
       <span role="presentation">
         <span>{n1}</span>
@@ -63,15 +66,16 @@ export default class GameQuestion extends React.Component {
     );
   }
   render() {
-    const { n1, n2, op } = this.props.question;
+    const question = this.factory.make(this.correctCounter, this.props.level);
+    const { n1, n2, op, opsig } = question;
     return (
       <div>
         <div id="conta" className="big text-center">
           <div id="conta-valores">
             <div tabIndex="3" aria-live="polite" aria-atomic="true" aria-label={`${n1} ${op} ${n2}`}></div>
-            {this.renderMath()}
+            {this.renderMath(n1, n2, opsig)}
           </div>
-          <AnswerInput onAnswer={this.onAnswer}/>
+          <AnswerInput onAnswer={this.onAnswer} question={question}/>
         </div>
       </div>
     )
@@ -91,7 +95,7 @@ class AnswerInput extends React.Component {
   onSubmit(e) {
     e.preventDefault();
     e.stopPropagation();
-    this.correct = this.props.onAnswer(this.state.answer);    
+    this.correct = this.props.onAnswer(this.state.answer, this.props.question);
     this.setState({
       answer: ''
     })

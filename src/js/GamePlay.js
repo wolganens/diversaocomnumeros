@@ -4,21 +4,19 @@ import GameInfo from './GameInfo';
 import GameQuestion from './GameQuestion';
 import GameActions from './GameActions';
 import GameNav from './GameNav';
-import { CalcFactory } from './Utils';
 
 export default class GamePlay extends React.Component {
   constructor(props) {
     super(props)
     this.incorrectHandler = this.incorrectHandler.bind(this);
-    this.correctHandler = this.correctHandler.bind(this);  
-    this.factory = new CalcFactory();
+    this.correctHandler = this.correctHandler.bind(this);      
   }
   incorrectHandler() {
     this.error.audioEl.play()
   }
   correctHandler() {
     this.props.onCorrentAnswer();
-    this.correct.audioEl.play();
+    this.correct.audioEl.play();    
   }  
   render() {
     return (
@@ -34,10 +32,10 @@ export default class GamePlay extends React.Component {
           />
           <GameQuestion
             onCorrentAnswer={this.correctHandler}
-            onIncorrectAnswer={this.incorrectHandler}
-            question={this.factory.make(this.props.score, this.props.level)}
+            onIncorrectAnswer={this.incorrectHandler}            
             isPaused={this.props.isPaused}
             score={this.props.score}
+            level={this.props.level}
           />
           <GameActions/>
           <GameNav/>

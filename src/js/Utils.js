@@ -10,17 +10,17 @@ export class CalcFactory {
   make(score, level) {
     this.score = score;
     this.level = level;
-    const gradSumProb = (20 - (this.score/10)) >= 0 ? (10 - (this.score/10)) : 5;
-    const gradSubProb = 3 + (this.score/12);
-    const gradMultProb = 0 + (this.score/10);
+    const gradSumProb = (20 - (this.score*10/10)) >= 0 ? (10 - (this.score*10/10)) : 5;
+    const gradSubProb = 3 + (this.score*10/12);
+    const gradMultProb = 0 + (this.score*10/10);
     const norm = gradSumProb + gradSubProb + gradMultProb;
     
     const sumProbs = [0.75, 0.5, 0.25, gradSumProb/norm];
     const subProbs = [0.25, 0.5, 0.25, gradSubProb/norm];
     const multProbs = [0.0, 0.0, 0.5 , gradMultProb/norm];
     const transAllowed = [false, true, true, true];
-    const n1Max = [50, 100, 500, this.score + 1];
-    const n2Max = [50, 100, 500, this.score + 1];
+    const n1Max = [50, 100, 500, this.score*10 + 1];
+    const n2Max = [50, 100, 500, this.score*10 + 1];
 
     /* define a operação */
     const prob = Math.random();    
