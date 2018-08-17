@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import imgTelaInicial from '../imgs/telaInicial.PNG';
 import imgSomAtivadoAzul from '../imgs/somAtivadoAzul.png';
 import imgTelaMenu from '../imgs/telaMenu.png';
@@ -171,6 +172,18 @@ function TelaInicial() {
 }
 class MusicaAvisosSonoros extends React.Component {
   render() {
+
+    ReactDOM.render(
+      <div id="tutorialSons">
+        <div id="musicainicio">"Música de início de jogo"</div>
+        <div id="musicafundo">"Música de fundo do jogo"</div>
+        <div id="somcerta">"Som de resposta certa"</div>
+        <div id="somerrada">"Som de resposta errada"</div>
+        <div id="somtempo">"Som de tempo acabando"</div>
+        <div id="somfim">"Som do fim de jogo"</div>
+      </div>
+    , document.getElementById("ariaLabels"))
+
     return (
       <ul>
         <li>
@@ -184,7 +197,7 @@ class MusicaAvisosSonoros extends React.Component {
           />
           <button
             tabIndex="1"
-            aria-label="música de início de jogo"
+            aria-labelledby="musicainicio"
             className="somIcone"
             id="iconeSomIncio"
             onClick={()=>{this.inicio.audioEl.play()}}
@@ -204,7 +217,7 @@ class MusicaAvisosSonoros extends React.Component {
           />
           <button
             tabIndex="2"
-            aria-label="música de fundo do jogo"
+            aria-labelledby="musicafundo"
             className="somIcone"
             id="iconeSomMusica"
             onClick={()=>{this.fundo.audioEl.play()}}
@@ -224,7 +237,7 @@ class MusicaAvisosSonoros extends React.Component {
           />
           <button
             tabIndex="3"
-            aria-label="som de resposta certa"
+            aria-labelledby="somcerta"
             className="somIcone"
             id="iconeSomAcerto"
             onClick={()=>{this.certa.audioEl.play()}}
@@ -244,7 +257,7 @@ class MusicaAvisosSonoros extends React.Component {
           />
           <button
             tabIndex="4"
-            aria-label="som de resposta errada"
+            aria-labelledby="somerrada"
             className="somIcone"
             id="iconeSomErro"
             onClick={()=>{this.errada.audioEl.play()}}
@@ -264,7 +277,7 @@ class MusicaAvisosSonoros extends React.Component {
           />
           <button
             tabIndex="5"
-            aria-label="som de tempo acabando"
+            aria-labelledby="somtempo"
             className="somIcone"
             id="iconeSomTempoAcab"
             onClick={()=>{this.dezSeg.audioEl.play()}}
@@ -284,7 +297,7 @@ class MusicaAvisosSonoros extends React.Component {
           />
           <button
             tabIndex="6"
-            aria-label="som de fim de jogo"
+            aria-labelledby="somfim"
             className="somIcone"
             id="iconeSomFimJogo"
             onClick={()=>{this.fimJogo.audioEl.play()}}

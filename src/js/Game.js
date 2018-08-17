@@ -72,7 +72,7 @@ export default class GameBoard extends React.Component {
     */
     this.setState(prevState => ({
       score: prevState.score + 10
-    }));    
+    }));
   }
   onGameOver() {
     this.setState({
@@ -149,7 +149,7 @@ export default class GameBoard extends React.Component {
           />
         );
       case this.gameStates.PLAYING:
-        return (          
+        return (
           <GamePlay
             onGameOver={this.onGameOver}
             score={this.state.score}
@@ -157,7 +157,7 @@ export default class GameBoard extends React.Component {
             onIncorrectAnswer={this.onIncorrectAnswer}
             isPaused={this.state.gameState === this.gameStates.PAUSED}
             saveOldTime={this.saveOldTime}
-            oldTime={this.oldTime}              
+            oldTime={this.oldTime}
             level={this.state.level}
             onPauseGame={this.onPauseGame}
             onMoreTime={(e)=>{this.moreTime = true}}
@@ -210,6 +210,8 @@ export default class GameBoard extends React.Component {
     return (
       <main>
         {this.renderMainSection()}
+        <div id="ariaLabels">
+        </div>
       </main>
     );
   }

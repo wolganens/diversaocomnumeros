@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import { CalcFactory } from './Utils';
 
 export default class GameQuestion extends React.Component {
@@ -7,7 +8,7 @@ export default class GameQuestion extends React.Component {
     this.state = {
       answer: ''
     }
-    this.onAnswer = this.onAnswer.bind(this);    
+    this.onAnswer = this.onAnswer.bind(this);
     this.getOperatorTag = this.getOperatorTag.bind(this);
     this.shouldComponentUpdate = this.shouldComponentUpdate.bind(this);
     this.factory = new CalcFactory();
@@ -32,7 +33,7 @@ export default class GameQuestion extends React.Component {
       default:
         console.log('Algo de errado não está certo');
         break;
-    }    
+    }
     if (answer !== '') {
       if (answer === result) {
         this.props.onCorrentAnswer();
@@ -44,7 +45,7 @@ export default class GameQuestion extends React.Component {
       }
     }
   }
-  getOperatorTag(opsig) {    
+  getOperatorTag(opsig) {
     switch (opsig) {
       case '-':
         return <minus/>;
@@ -56,23 +57,27 @@ export default class GameQuestion extends React.Component {
         return <plus/>;
     }
   }
-  renderMath(n1, n2, opsig) {    
+  renderMath(n1, n2, opsig) {
     return (
       <span role="presentation">
         <span>{n1}</span>
         <span className="absolute left">{opsig}</span>
-        <span>{n2}</span>          
+        <span>{n2}</span>
       </span>
     );
   }
   render() {
     const question = this.factory.make(this.correctCounter, this.props.level);
     const { n1, n2, op, opsig } = question;
+
+    ReactDOM.render(
+        <div id="jogoConta" tabIndex="3" aria-live="polite" aria-atomic="true" >{`${n1} ${op} ${n2}`}</div>
+    , document.getElementById("ariaLabels"))
+
     return (
       <div>
         <div id="conta" className="big text-center">
-          <div id="conta-valores">
-            <div tabIndex="3" aria-live="polite" aria-atomic="true" aria-label={`${n1} ${op} ${n2}`}></div>
+          <div aria-hidden="true" id="conta-valores">
             {this.renderMath(n1, n2, opsig)}
           </div>
           <AnswerInput onAnswer={this.onAnswer} question={question}/>
@@ -118,12 +123,12 @@ class AnswerInput extends React.Component {
     return (
       <form action="#" id="answer-form" onSubmit={this.onSubmit}>
         <input
-          tabIndex="4"          
+          tabIndex="4"
           className={`${!this.correct ? 'shake animated ' : ''} small`}
           placeholder="Digite o resultado da conta"
           type="text"
           value={this.state.answer}
-          onChange={this.onInputChange}          
+          onChange={this.onInputChange}
           disabled={this.props.gameOver || this.props.isPaused}
         />
         {this.correct = true}

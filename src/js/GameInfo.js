@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import clockImage from '../imgs/relogio.png';
 import hurryClockImage from '../imgs/relogiotempo.png';
 
@@ -23,7 +24,7 @@ export default class GameInfo extends React.Component {
     /*
       Este método é responsável por descontar 1 unidade do campo time no estado
       do componenente
-    */    
+    */
     this.setState(prevState => ({
       time: prevState.time - 1
     }));
@@ -79,12 +80,18 @@ export default class GameInfo extends React.Component {
     */
     clearInterval(this.interval);
   }
-  render() {    
+  render() {
+
+    ReactDOM.render(
+      <div id="gameinfo">
+        <div aria-live="assertive" aria-atomic="false">{parseInt(((this.state.time)/10)+1, 10) + "0 segundos restantes"}</div>
+      </div>
+    , document.getElementById("ariaLabels"))
+
     return (
       <div id="top-info">
         <div tabIndex="1" className="pull-left">Pontos: {this.props.score}</div>
         <div aria-hidden="true" className="pull-right">Tempo: {this.state.time}</div>
-        <div aria-live="assertive" aria-atomic="false" aria-label={parseInt(((this.state.time)/10)+1, 10) + "0 segundos restantes"} style={this.escondido}></div>
         <div className="clearfix"></div>
         {this.state.hurryUp ? (
           <img id="clock-img" className="shake animated absolute" src={hurryClockImage} alt="relogio do tempo"/>

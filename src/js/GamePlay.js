@@ -9,19 +9,19 @@ export default class GamePlay extends React.Component {
   constructor(props) {
     super(props)
     this.incorrectHandler = this.incorrectHandler.bind(this);
-    this.correctHandler = this.correctHandler.bind(this);      
+    this.correctHandler = this.correctHandler.bind(this);
   }
   incorrectHandler() {
     this.error.audioEl.play()
   }
   correctHandler() {
     this.props.onCorrentAnswer();
-    this.correct.audioEl.play();    
-  }  
+    this.correct.audioEl.play();
+  }
   render() {
     return (
       <div className="classroom">
-        <section className="fadeIn animated quadroJogo">        
+        <section className="fadeIn animated quadroJogo">
           <GameInfo
             onGameOver={this.props.onGameOver}
             score={this.props.score}
@@ -32,7 +32,7 @@ export default class GamePlay extends React.Component {
           />
           <GameQuestion
             onCorrentAnswer={this.correctHandler}
-            onIncorrectAnswer={this.incorrectHandler}            
+            onIncorrectAnswer={this.incorrectHandler}
             isPaused={this.props.isPaused}
             score={this.props.score}
             level={this.props.level}
