@@ -10,6 +10,12 @@ import imgTelaJogoPausado from '../imgs/telaJogoPausado.png';
 import imgTelaFimJogo from '../imgs/telaFimJogo.png';
 import GameNav from './GameNav';
 import '../css/tutorial.css';
+import startSound from '../sons/inicio.mp3';
+import backgroundSound from '../sons/musica.mp3';
+import hitSound from '../sons/acerto.mp3';
+import missSound from '../sons/erro.mp3';
+import hurryUpSound from '../sons/dezSegundos.mp3';
+import gameOverSound from '../sons/fimJogo.mp3';
 
 export default class Tutorial extends React.Component {
   constructor(props) {
@@ -188,7 +194,7 @@ class MusicaAvisosSonoros extends React.Component {
       <ul>
         <li>
           <ReactAudioPlayer
-            src="/sons/inicio.mp3"
+            src={startSound}
             ref={(element) => { this.inicio = element; }}
             autoPlay={false}
             className="hidden"
@@ -208,7 +214,7 @@ class MusicaAvisosSonoros extends React.Component {
         </li>
         <li >
           <ReactAudioPlayer
-            src="/sons/musica.mp3"
+            src={backgroundSound}
             ref={(element) => { this.fundo = element; }}
             autoPlay={false}
             className="hidden"
@@ -228,7 +234,7 @@ class MusicaAvisosSonoros extends React.Component {
         </li>
         <li>
           <ReactAudioPlayer
-            src="/sons/acerto.mp3"
+            src={hitSound}
             ref={(element) => { this.certa = element; }}
             autoPlay={false}
             className="hidden"
@@ -248,7 +254,7 @@ class MusicaAvisosSonoros extends React.Component {
         </li>
         <li>
           <ReactAudioPlayer
-            src="/sons/erro.mp3"
+            src={missSound}
             ref={(element) => { this.errada = element; }}
             autoPlay={false}
             className="hidden"
@@ -268,7 +274,7 @@ class MusicaAvisosSonoros extends React.Component {
         </li>
         <li >
           <ReactAudioPlayer
-            src="/sons/dezSegundos.mp3"
+            src={hurryUpSound}
             ref={(element) => { this.dezSeg = element; }}
             autoPlay={false}
             className="hidden"
@@ -288,7 +294,7 @@ class MusicaAvisosSonoros extends React.Component {
         </li>
         <li >
           <ReactAudioPlayer
-            src="/sons/fimJogo.mp3"
+            src={gameOverSound}
             ref={(element) => { this.fimJogo = element; }}
             autoPlay={false}
             className="hidden"

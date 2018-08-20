@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import clockImage from '../imgs/relogio.png';
 import hurryClockImage from '../imgs/relogiotempo.png';
+import ReactAudioPlayer from 'react-audio-player';
+import hurryUpSound from '../sons/dezSegundos.mp3';
 
 export default class GameInfo extends React.Component {
   /*
@@ -48,6 +50,7 @@ export default class GameInfo extends React.Component {
     */
     if (this.state.time <= 10) {
       if (!this.state.hurryUp) {
+        this.hurryUpTime.audioEl.play();
         this.setState({
           hurryUp: true
         });
@@ -98,6 +101,13 @@ export default class GameInfo extends React.Component {
         ) : (
           <img id="clock-img" className="absolute" src={clockImage} alt="relogio do tempo"/>
         )}
+        <ReactAudioPlayer
+            src={hurryUpSound}
+            ref={(element) => { this.hurryUpTime = element; }}
+            autoPlay={false}
+            className="hidden"
+            controls
+          />
       </div>
     )
   }

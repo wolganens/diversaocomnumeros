@@ -4,6 +4,8 @@ import GameInfo from './GameInfo';
 import GameQuestion from './GameQuestion';
 import GameActions from './GameActions';
 import GameNav from './GameNav';
+import hitSound from '../sons/acerto.mp3';
+import missSound from '../sons/erro.mp3';
 
 export default class GamePlay extends React.Component {
   constructor(props) {
@@ -40,14 +42,14 @@ export default class GamePlay extends React.Component {
           <GameActions/>
           <GameNav/>
           <ReactAudioPlayer
-            src="/sons/acerto.mp3"
+            src={hitSound}
             ref={(element) => { this.correct = element; }}
             autoPlay={false}
             className="hidden"
             controls
           />
           <ReactAudioPlayer
-            src="/sons/erro.mp3"
+            src={missSound}
             ref={(element) => { this.error = element; }}
             autoPlay={false}
             className="hidden"
