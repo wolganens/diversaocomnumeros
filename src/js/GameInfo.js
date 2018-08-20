@@ -87,7 +87,7 @@ export default class GameInfo extends React.Component {
 
     ReactDOM.render(
       <div id="gameinfo">
-        <div aria-live="assertive" aria-atomic="false">{parseInt(((this.state.time)/10)+1, 10) + "0 segundos restantes"}</div>
+        <div aria-live="assertive" >{parseInt(((this.state.time)/10)+1, 10) + "0 segundos restantes"}</div>
       </div>
     , document.getElementById("ariaLabels"))
 

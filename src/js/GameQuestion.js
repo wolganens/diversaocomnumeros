@@ -71,8 +71,8 @@ export default class GameQuestion extends React.Component {
     const { n1, n2, op, opsig } = question;
 
     ReactDOM.render(
-        <div id="jogoConta" tabIndex="3" aria-live="polite" aria-atomic="true" >{`${n1} ${op} ${n2}`}</div>
-    , document.getElementById("ariaLabels"))
+        <div id="jogoConta" tabIndex="3" aria-live="polite">{`${n1} ${op} ${n2}`}</div>
+    , document.getElementById("contaLabel"))
 
     return (
       <div>

@@ -210,8 +210,8 @@ export default class GameBoard extends React.Component {
     return (
       <main>
         {this.renderMainSection()}
-        <div id="ariaLabels">
-        </div>
+        <div id="ariaLabels"></div>
+        <div id="contaLabel"></div>
       </main>
     );
   }

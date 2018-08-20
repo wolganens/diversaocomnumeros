@@ -22,7 +22,7 @@ export default class StartScreen extends React.Component {
 
     ReactDOM.render(
       <div id="startscreen">
-        <div tabIndex="1" id="tituloJogo">Diversão com Numeros</div>
+        <div tabIndex="1" id="tituloJogo">Diversão com Números</div>
         <div id="botaoJogar">Jogar</div>
       </div>
     , document.getElementById("ariaLabels"))
