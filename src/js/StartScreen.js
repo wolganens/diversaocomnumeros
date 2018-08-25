@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 export default class StartScreen extends React.Component {
 
   constructor(props) {
@@ -19,14 +18,6 @@ export default class StartScreen extends React.Component {
     if (this.state.loading) {
       return <p className="text-center big">Carregando...</p>
     }
-
-    ReactDOM.render(
-      <div id="startscreen">
-        <div tabIndex="1" id="tituloJogo">Diversão com Números</div>
-        <div id="botaoJogar">Jogar</div>
-      </div>
-    , document.getElementById("ariaLabels"))
-
     return (
       <div className="borda">
         <header>
