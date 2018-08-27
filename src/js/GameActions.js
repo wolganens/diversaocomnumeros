@@ -2,6 +2,7 @@ import React from 'react';
 import ReactAudioPlayer from 'react-audio-player';
 import disabledMusic from '../imgs/somDesativadoAzul.png';
 import enabledMusic from '../imgs/somAtivadoAzul.png';
+import gameSong from "../sons/Bubble_Bath.mp3";
 
 export default class GameActions extends React.Component {
   constructor(props) {
@@ -45,7 +46,7 @@ export default class GameActions extends React.Component {
           </button>
         )}
         <ReactAudioPlayer
-            src="/sons/Bubble_Bath.mp3"
+            src={gameSong}
             ref={(element) => { this.music = element; }}
             autoPlay={false}
             className="hidden"
